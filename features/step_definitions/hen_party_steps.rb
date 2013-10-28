@@ -27,13 +27,18 @@ When(/^I submit the sign up form with valid details$/) do
   click_button 'Sign up'
 end
 
-Then(/^I should be logged in$/) do
+Then(/^I should be signed in$/) do
   expect(current_path).to eq root_path
   expect(page).not_to have_link('Sign up')
   expect(page).not_to have_link('Sign in')
 end
 
-Given(/^I have signed up$/) do
+Then(/^I should be signed out$/) do
+  expect(current_path).to eq root_path
+  expect(page).not_to have_link('Sign out')
+end
+
+Given(/^I have an account$/) do
   visit new_user_registration_path
 
   fill_in 'Email', with: 'email@email.com'
@@ -45,11 +50,24 @@ Given(/^I have signed up$/) do
   click_link 'Sign out'
 end
 
+Given(/^I have signed in$/) do
+  visit new_user_session_path
+
+  fill_in 'Email', with: 'email@email.com'
+  fill_in 'Password', with: 'password'
+
+  click_button 'Sign in'
+end
+
 When(/^I submit the sign in form with valid details$/) do
   fill_in 'Email', with: 'email@email.com'
   fill_in 'Password', with: 'password'
 
   click_button 'Sign in'
+end
+
+Then(/^I should not see "(.*?)"$/) do |text|
+  expect(page).not_to have_content(text)
 end
 
 Then(/^I should see a welcome message$/) do
