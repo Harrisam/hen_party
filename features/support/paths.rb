@@ -18,6 +18,9 @@ module NavigationHelpers
     when /the sign up page/
       new_user_registration_path
 
+    when /the sign in page/
+      new_user_session_path
+
     else
       raise "Can't find mapping from \"#{page_name}\" to a path.\n" +
         "Now, go and add a mapping in #{__FILE__}"

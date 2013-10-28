@@ -12,3 +12,4 @@ Feature: Chief Hen signs up
     Given I am on the sign up page
     When I submit the sign up form with valid details
     Then I should be logged in
+    And I should see a welcome message
