@@ -29,4 +29,5 @@ end
 Then(/^I should be logged in$/) do
   expect(current_path).to eq root_path
   expect(page).to have_css('.alert', 'Welcome! You have signed up successfully.')
+  expect(page).not_to have_link('Sign Up')
 end
