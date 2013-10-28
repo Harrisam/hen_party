@@ -5,5 +5,5 @@ Feature: Create a Hen Party
 
   Scenario: When I visit the app
     Given I am on the homepage
-    When I click 'Create Hen Party'
+    When I click "Create Hen Party"
     Then I should see a new Hen Party
