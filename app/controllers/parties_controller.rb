@@ -1,4 +1,5 @@
 class PartiesController < ApplicationController
+  before_filter :authenticate_user!, except: [:new, :create]
   before_action :set_party, only: [:show, :edit, :update, :destroy]
   helper_method :party_and_user_errors
 

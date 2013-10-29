@@ -77,3 +77,7 @@ Then(/^I should see a welcome back message$/) do
   expect(page).to have_css('.alert', text: 'Signed in successfully.')
   expect(page).not_to have_link('Sign in')
 end
+
+When(/^I try to access it$/) do
+  visit party_path(Party.last)
+end
