@@ -61,42 +61,42 @@ describe PartiesController do
     end
   end
 
-  describe "POST create" do
-    describe "with valid params" do
-      it "creates a new Party" do
-        expect {
-          post :create, {:party => valid_attributes}, valid_session
-        }.to change(Party, :count).by(1)
-      end
+  # describe "POST create" do
+  #   describe "with valid params" do
+  #     it "creates a new Party" do
+  #       expect {
+  #         post :create, {:party => valid_attributes}, valid_session
+  #       }.to change(Party, :count).by(1)
+  #     end
 
-      it "assigns a newly created party as @party" do
-        post :create, {:party => valid_attributes}, valid_session
-        assigns(:party).should be_a(Party)
-        assigns(:party).should be_persisted
-      end
+  #     it "assigns a newly created party as @party" do
+  #       post :create, {:party => valid_attributes}, valid_session
+  #       assigns(:party).should be_a(Party)
+  #       assigns(:party).should be_persisted
+  #     end
 
-      it "redirects to the created party" do
-        post :create, {:party => valid_attributes}, valid_session
-        response.should redirect_to(Party.last)
-      end
-    end
+  #     it "redirects to the created party" do
+  #       post :create, {:party => valid_attributes}, valid_session
+  #       response.should redirect_to(Party.last)
+  #     end
+  #   end
 
-    describe "with invalid params" do
-      it "assigns a newly created but unsaved party as @party" do
-        # Trigger the behavior that occurs when invalid params are submitted
-        Party.any_instance.stub(:save).and_return(false)
-        post :create, {:party => { "name" => "invalid value" }}, valid_session
-        assigns(:party).should be_a_new(Party)
-      end
+  #   describe "with invalid params" do
+  #     it "assigns a newly created but unsaved party as @party" do
+  #       # Trigger the behavior that occurs when invalid params are submitted
+  #       Party.any_instance.stub(:save).and_return(false)
+  #       post :create, {:party => { "name" => "invalid value" }}, valid_session
+  #       assigns(:party).should be_a_new(Party)
+  #     end
 
-      it "re-renders the 'new' template" do
-        # Trigger the behavior that occurs when invalid params are submitted
-        Party.any_instance.stub(:save).and_return(false)
-        post :create, {:party => { "name" => "invalid value" }}, valid_session
-        response.should render_template("new")
-      end
-    end
-  end
+  #     it "re-renders the 'new' template" do
+  #       # Trigger the behavior that occurs when invalid params are submitted
+  #       Party.any_instance.stub(:save).and_return(false)
+  #       post :create, {:party => { "name" => "invalid value" }}, valid_session
+  #       response.should render_template("new")
+  #     end
+  #   end
+  # end
 
   describe "PUT update" do
     describe "with valid params" do
