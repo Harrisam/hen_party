@@ -1,6 +1,6 @@
-Feature: Chief Hen signs in
+Feature: Hen signs in
   In order to see my private Hen Party
-  As a Chief Hen
+  As a Hen
   I want to sign in
 
   Scenario: by visiting the welcome page

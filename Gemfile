@@ -52,6 +52,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'cucumber-rails', :require => false, git: 'https://github.com/cucumber/cucumber-rails.git'
   gem 'database_cleaner'
+  gem 'launchy'
 end
 
 # Use ActiveModel has_secure_password

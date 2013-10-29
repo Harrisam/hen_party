@@ -3,7 +3,7 @@ Feature: Hen signs out
   As a Hen
   I want to sign out
 
-  Scenario: 
+  Scenario: but not when signed out
     Given I am on the homepage
     Then I should not see "Sign out"
 

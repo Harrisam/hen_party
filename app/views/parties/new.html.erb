@@ -1,5 +1,38 @@
 <h1>New party</h1>
 
-<%= render 'form' %>
+<%= form_for(@party) do |f| %>
+  <% if party_and_user_errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(party_and_user_errors.count, "error") %> prohibited this party from being saved:</h2>
 
-<%= link_to 'Back', parties_path %>
+      <ul>
+      <% party_and_user_errors.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name, :autofocus => true %>
+  </div>
+
+  <%= fields_for(@user) do |user_f| %>
+    <div>
+      <%= user_f.label :email %><br />
+      <%= user_f.email_field :email %>
+    </div>
+    <div>
+      <%= user_f.label :password %><br />
+      <%= user_f.password_field :password %>
+    </div>
+    <div>
+      <%= user_f.label :password_confirmation %><br />
+      <%= user_f.password_field :password_confirmation %>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

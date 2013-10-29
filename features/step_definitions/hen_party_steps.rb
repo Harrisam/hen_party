@@ -19,18 +19,8 @@ When(/^I click "(.*?)"$/) do |link_text|
   click_link link_text 
 end
 
-When(/^I submit the sign up form with valid details$/) do
-  fill_in 'Email', with: 'email@email.com'
-  fill_in 'Password', with: 'password'
-  fill_in 'Password confirmation', with: 'password'
-
-  click_button 'Sign up'
-end
-
 Then(/^I should be signed in$/) do
   expect(current_path).to eq root_path
-  expect(page).not_to have_link('Sign up')
-  expect(page).not_to have_link('Sign in')
 end
 
 Then(/^I should be signed out$/) do
@@ -39,13 +29,15 @@ Then(/^I should be signed out$/) do
 end
 
 Given(/^I have an account$/) do
-  visit new_user_registration_path
+  visit new_party_path
+
+  fill_in 'Name', with: 'Bridezilla on the rampage'
 
   fill_in 'Email', with: 'email@email.com'
   fill_in 'Password', with: 'password'
   fill_in 'Password confirmation', with: 'password'
 
-  click_button 'Sign up'
+  click_button 'Create Party'
 
   click_link 'Sign out'
 end
@@ -57,6 +49,16 @@ Given(/^I have signed in$/) do
   fill_in 'Password', with: 'password'
 
   click_button 'Sign in'
+end
+
+When(/^I submit the new hen party form with valid details$/) do
+  fill_in 'Name', with: 'Bridezilla on the rampage'
+
+  fill_in 'Email', with: 'email@email.com'
+  fill_in 'Password', with: 'password'
+  fill_in 'Password confirmation', with: 'password'
+
+  click_button 'Create Party'
 end
 
 When(/^I submit the sign in form with valid details$/) do
@@ -71,9 +73,11 @@ Then(/^I should not see "(.*?)"$/) do |text|
 end
 
 Then(/^I should see a welcome message$/) do
-  expect(page).to have_css('.alert', 'Welcome! You have signed up successfully.')
+  expect(page).to have_css('.alert', text: 'Party was successfully created.')
+  expect(page).not_to have_link('Sign in')
 end
 
 Then(/^I should see a welcome back message$/) do
-  expect(page).to have_css('.alert', 'Signed in successfully.')
+  expect(page).to have_css('.alert', text: 'Signed in successfully.')
+  expect(page).not_to have_link('Sign in')
 end

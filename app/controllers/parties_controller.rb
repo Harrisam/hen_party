@@ -1,5 +1,6 @@
 class PartiesController < ApplicationController
   before_action :set_party, only: [:show, :edit, :update, :destroy]
+  helper_method :party_and_user_errors
 
   # GET /parties
   # GET /parties.json
@@ -15,6 +16,7 @@ class PartiesController < ApplicationController
   # GET /parties/new
   def new
     @party = Party.new
+    @user = User.new
   end
 
   # GET /parties/1/edit
@@ -25,9 +27,11 @@ class PartiesController < ApplicationController
   # POST /parties.json
   def create
     @party = Party.new(party_params)
+    @user = User.new(user_params)
 
     respond_to do |format|
-      if @party.save
+      if @party.save && @user.save
+        sign_in(:user, @user)
         format.html { redirect_to @party, notice: 'Party was successfully created.' }
         format.json { render action: 'show', status: :created, location: @party }
       else
@@ -70,5 +74,13 @@ class PartiesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def party_params
       params.require(:party).permit(:name)
+    end
+
+    def user_params
+      params.require(:user).permit(:email, :password, :password_confirmation)
+    end
+
+    def party_and_user_errors
+      @party.errors.full_messages + @user.errors.full_messages
     end
 end

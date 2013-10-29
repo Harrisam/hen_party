@@ -15,11 +15,14 @@ module NavigationHelpers
     #   when /^(.*)'s profile page$/i
     #     user_profile_path(User.find_by_login($1))
 
-    when /the sign up page/
-      new_user_registration_path
-
     when /the sign in page/
       new_user_session_path
+
+    when /the new hen party page/
+      new_party_path
+
+    when /my hen party page/
+      party_path(Party.last)
 
     else
       raise "Can't find mapping from \"#{page_name}\" to a path.\n" +
