@@ -1,6 +1,6 @@
 class PartiesController < ApplicationController
   before_filter :authenticate_user!, except: [:new, :create]
-  before_action :set_party, only: [:show, :edit, :update, :destroy]
+  before_action :set_party, only: [:show, :edit, :update, :destroy, :invite]
   helper_method :party_and_user_errors
 
   # GET /parties
@@ -12,6 +12,10 @@ class PartiesController < ApplicationController
   # GET /parties/1
   # GET /parties/1.json
   def show
+  end
+
+  # GET /parties/1/invitation
+  def invite
   end
 
   # GET /parties/new
