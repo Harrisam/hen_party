@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131029112805) do
+ActiveRecord::Schema.define(version: 20131029114044) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,17 @@ ActiveRecord::Schema.define(version: 20131029112805) do
   end
 
   add_index "date_options", ["party_id"], name: "index_date_options_on_party_id", using: :btree
+
+  create_table "participants", force: true do |t|
+    t.string   "email"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "party_id"
+  end
+
+  add_index "participants", ["party_id"], name: "index_participants_on_party_id", using: :btree
 
   create_table "parties", force: true do |t|
     t.string   "name"
