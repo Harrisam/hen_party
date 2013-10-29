@@ -11,10 +11,6 @@ Then /^(?:|I )should be on (.+)$/ do |page_name|
   end
 end
 
-Then(/^I should see a new Hen Party$/) do
-  expect(current_path).to eq new_party_path
-end
-
 When(/^I click "(.*?)"$/) do |link_text|
   click_link link_text 
 end
