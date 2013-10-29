@@ -55,6 +55,8 @@ group :development, :test do
   gem 'launchy'
 end
 
+gem 'activerecord-session_store'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

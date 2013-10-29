@@ -31,7 +31,8 @@ class PartiesController < ApplicationController
 
     respond_to do |format|
       if @party.save && @user.save
-        sign_in(:user, @user)
+        @party.assign_chief_hen(@user)
+        sign_in @user
         format.html { redirect_to @party, notice: 'Party was successfully created.' }
         format.json { render action: 'show', status: :created, location: @party }
       else
@@ -83,4 +84,5 @@ class PartiesController < ApplicationController
     def party_and_user_errors
       @party.errors.full_messages + @user.errors.full_messages
     end
+
 end
