@@ -49,6 +49,7 @@ group :development, :test do
   gem 'shoulda'
   gem 'guard'
   gem 'guard-rspec'
+  gem 'guard-cucumber'
   gem 'factory_girl_rails'
   gem 'cucumber-rails', :require => false, git: 'https://github.com/cucumber/cucumber-rails.git'
   gem 'database_cleaner'
