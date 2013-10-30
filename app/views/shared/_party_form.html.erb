@@ -1,21 +1,11 @@
 <%= form_for(@party) do |f| %>
-  <% if party_and_user_errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(party_and_user_errors.count, "error") %> prohibited this party from being saved:</h2>
-
-      <ul>
-      <% party_and_user_errors.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  
   <div class="field">
     <%= f.label :name %><br>
     <%= f.text_field :name, :autofocus => true %>
   </div>
 
-  <%= fields_for @user do |user_f| %>
+  <%= fields_for :users do |user_f| %>
     <div>
       <%= user_f.label :email %><br />
       <%= user_f.email_field :email %>
@@ -34,9 +24,12 @@
     <div>
       <%= party_b.label :amount, 'Budget' %><br />
       <%= party_b.text_field :amount %>
+
     </div>
   	<% end %>
-
+  <%= f.hidden_field :party_id, value: @party.id %>
+  <%= f.hidden_field :user_id, value: current_user.id %>	
+ 
   <div class="actions">
     <%= f.submit %>
   </div>
