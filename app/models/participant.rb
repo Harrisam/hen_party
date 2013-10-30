@@ -1,5 +1,5 @@
 class Participant < ActiveRecord::Base
-	belongs_to :party
+	belongs_to :party, dependent: :destroy
 	validates :email, :presence => true
 	validates :first_name, :presence => true
 	validates :last_name, :presence => true

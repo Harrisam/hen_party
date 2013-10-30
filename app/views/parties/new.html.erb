@@ -1,20 +1,19 @@
-<h1>New party</h1>
-
 <%= form_for(@party) do |f| %>
-  <% if party_and_user_errors.any? %>
+  <% if @party.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(party_and_user_errors.count, "error") %> prohibited this party from being saved:</h2>
+      <h2><%= pluralize(@party.errors.count, "error") %> prohibited this party from being saved:</h2>
 
       <ul>
-      <% party_and_user_errors.each do |msg| %>
+      <% @party.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
+
   <div class="field">
     <%= f.label :name %><br>
-    <%= f.text_field :name, :autofocus => true %>
+    <%= f.text_field :name %>
   </div>
 
   <%= fields_for @user do |user_f| %>
@@ -29,7 +28,7 @@
     <div>
       <%= user_f.label :password_confirmation %><br />
       <%= user_f.password_field :password_confirmation %>
-    </div>
+    </div><br/>
   <% end %>
 
   <div class="actions">
