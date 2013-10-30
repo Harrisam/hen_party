@@ -29,4 +29,16 @@ HenParty::Application.configure do
 
   # For Devise emails
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
+  # Mailgun
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.smtp_settings = {
+    :authentication => :plain,
+    :address => "smtp.mailgun.org",
+    :port => 587,
+    :domain => "app19020990.mailgun.org",
+    :user_name => "postmaster@app19020990.mailgun.org",
+    :password => ENV['MAILGUN_SMTP_PASSWORD']}
 end

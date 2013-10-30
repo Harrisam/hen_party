@@ -25,6 +25,15 @@ class PartiesController < ApplicationController
 
   # POST /parties/1/send_invitations
   def send_invitations
+    subject = params[:invitation][:subject]
+    message = params[:invitation][:message]
+
+    participants = @party.participants
+    
+    participants.each do |participant|
+      send_email(current_user.email, participant.email, subject, message)
+    end
+
     redirect_to @party, notice: 'Invitations successfully sent.'
   end
 
@@ -94,6 +103,10 @@ class PartiesController < ApplicationController
 
     def user_params
       params.require(:user).permit(:email, :password, :password_confirmation)
+    end
+
+    def invitation_params
+      params.require(:invitation).permit(:subject, :message)
     end
 
     def party_and_user_errors

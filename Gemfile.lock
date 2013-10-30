@@ -166,6 +166,8 @@ GEM
       ffi (>= 0.5.0)
     rdoc (3.12.2)
       json (~> 1.4)
+    rest-client (1.6.7)
+      mime-types (>= 1.16)
     rspec (2.14.1)
       rspec-core (~> 2.14.0)
       rspec-expectations (~> 2.14.0)
@@ -244,6 +246,7 @@ DEPENDENCIES
   launchy
   pg
   rails (= 4.0.0)
+  rest-client
   rspec-rails (~> 2.0)
   sass-rails (~> 4.0.0)
   sdoc
