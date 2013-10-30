@@ -60,7 +60,13 @@ group :development, :test do
   gem 'launchy'
 end
 
+# Use ActiveRecord to store session
 gem 'activerecord-session_store'
+
+# Heroku deployment
+group :production do
+  gem 'rails_12factor'
+end
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
