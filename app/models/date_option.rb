@@ -1,3 +1,3 @@
 class DateOption < ActiveRecord::Base
-	belongs_to :party, dependent: :destroy
+	belongs_to :party
 end
