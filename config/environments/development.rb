@@ -40,5 +40,5 @@ HenParty::Application.configure do
     :port => 587,
     :domain => "app19020990.mailgun.org",
     :user_name => "postmaster@app19020990.mailgun.org",
-    :password => ENV['MAILGUN_SMTP_PASSWORD']}
+    :password => ENV['MAILGUN_SMTP_PASSWORD'] }
 end

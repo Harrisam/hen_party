@@ -79,5 +79,17 @@ HenParty::Application.configure do
   config.log_formatter = ::Logger::Formatter.new
 
   # For Devise emails
-  #config.action_mailer.default_url_options = { :host => 'TBC' }
+  config.action_mailer.default_url_options = { :host => 'fathomless-bastion-3034.herokuapp.com' }
+
+  # Mailgun
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.smtp_settings = {
+    :authentication => :plain,
+    :address => "smtp.mailgun.org",
+    :port => 587,
+    :domain => "app19020990.mailgun.org",
+    :user_name => "postmaster@app19020990.mailgun.org",
+    :password => ENV['MAILGUN_SMTP_PASSWORD'] }
 end
