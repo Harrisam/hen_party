@@ -19,7 +19,10 @@
 
 <h3>Dates</h3>
 <ul><% @party.date_options.each do |f| %>
-	<%= content_tag :li, f.start_date  + " " + f.end_date%>
+	<li>
+		<%= f.start_date %> - 
+		<%= f.end_date %>
+	</li>
 	<% end %>
 </ul>
 
