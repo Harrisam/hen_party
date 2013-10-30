@@ -2,23 +2,34 @@ require 'spec_helper'
 
 describe 'Invite Hens to a party' do
 
+  before(:each) do
+    visit new_party_path
+
+    fill_in 'Name', with: 'Bridezilla on the rampage'
+
+    fill_in 'Email', with: 'email@email.com'
+    fill_in 'Password', with: 'password'
+    fill_in 'Password confirmation', with: 'password'
+
+    click_button 'Create Party'
+
+    @party = Party.last
+    @user = User.last
+  end
+
+  context 'when I have not added Hens to my party' do
+
+    it 'should not have an invite hens button' do
+      visit party_path(@party)
+      expect(page).not_to have_link 'Invite Hens'
+    end
+
+  end
+
   context 'when I have added Hens to my party' do
     
     before(:each) do
-      visit new_party_path
-
-      fill_in 'Name', with: 'Bridezilla on the rampage'
-
-      fill_in 'Email', with: 'email@email.com'
-      fill_in 'Password', with: 'password'
-      fill_in 'Password confirmation', with: 'password'
-
-      click_button 'Create Party'
-
-      @party = Party.last
-      @user = User.last
       @hen = Participant.new(email: 'hen@hen.com', first_name: 'Jen', last_name: 'Hen')
-
       @party.participants << @hen
     end
 
