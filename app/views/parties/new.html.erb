@@ -15,14 +15,14 @@
     <div class="well">
       <div class="form-group">
         <%= f.label :name, 'Name of your party' %><br>
-        <%= f.text_field :name, class: "form-control" %>
+        <%= f.text_field :name, class: "form-control", placeholder: "Sam's Hen Party" %>
       </div>
     </div>
   </div>
 
   <div class="row">
     <div class="well col-md-6">
-      <p>Your details</p>
+      <h4>Your details</h4>
       <%= fields_for @user do |user_f| %>
         <div class="form-group">
           <%= user_f.label :email %><br />
