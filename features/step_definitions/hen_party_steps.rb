@@ -81,3 +81,9 @@ end
 When(/^I try to access it$/) do
   visit party_path(Party.last)
 end
+
+Then(/^I should receive a confirmation email$/) do
+  expect(emails.last.subject).to include 'Welcome to Hen Party'
+  expect(emails.last.body).to include 'Bridezilla on the rampage'
+  expect(emails.last.body).to include party_path(Party.last)
+end

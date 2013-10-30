@@ -7,4 +7,9 @@ class PartyInvitation < ActionMailer::Base
     mail(to: participant.email, subject: subject)
   end
 
+  def create_party_confirmation(user, party)
+    @user, @party = user, party
+    mail(to: user.email, subject: 'Welcome to Hen Party')
+  end
+
 end
