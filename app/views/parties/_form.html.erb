@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <%= form_for @party do |f| %>
+=======
+<%= form_for @party, url: {action: "update"} do |f| %>
+>>>>>>> 20432586578cb33c1dd0b576ca55f479ddc075b2
   <div class="field">
     <%= f.label :name %><br>
     <%= f.text_field :name %>
