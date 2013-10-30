@@ -47,6 +47,28 @@ describe 'Invite Hens to a party' do
         expect(page).to have_css('.alert', text: 'Invitations successfully sent.')
       end
 
+      context 'invitation emails' do
+
+        before(:each) do
+          fill_in 'Subject', with: 'Subject line'
+          fill_in 'Message', with: 'Special message to the hens'
+          click_button 'Send invitation'
+        end
+        
+        it 'should have the chosen subject line' do
+          expect(emails.last.subject).to eq 'Subject line'
+        end
+
+        it 'should have the chosen message' do
+          expect(emails.last.body).to include 'Special message to the hens'
+        end
+
+        it 'should have the link with token to join the party' do
+          expect(emails.last.body).to include @hen.token
+        end
+      
+      end
+
     end
 
   end

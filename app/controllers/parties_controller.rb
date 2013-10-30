@@ -7,6 +7,7 @@ class PartiesController < ApplicationController
                                    :invitation,
                                    :send_invitations]
   helper_method :party_and_user_errors
+  helper_method :send_email
 
   # GET /parties
   # GET /parties.json
@@ -32,7 +33,8 @@ class PartiesController < ApplicationController
     participants = @party.participants
     
     participants.each do |participant|
-      send_email(current_user.email, participant.email, subject, message)
+      PartyInvitation.invitation_email(participant, subject, message).deliver!
+      # send_email(current_user.email, participant.email, subject, message)
     end
 
     redirect_to @party, notice: 'Invitations successfully sent.'
@@ -123,5 +125,13 @@ class PartiesController < ApplicationController
     def party_and_user_errors
       @party.errors.full_messages + @user.errors.full_messages
     end
+
+    # def send_email(from_email, to_email, subject, message)
+    #   RestClient.post "https://api:key-179lcg-u9vzbje06frgnqj-zzngvgdw2@api.mailgun.net/v2/samples.mailgun.org/messages",
+    #     :from => from_email,
+    #     :to => to_email,
+    #     :subject => subject,
+    #     :text => message
+    # end
 
 end
