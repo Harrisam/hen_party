@@ -17,7 +17,6 @@ describe 'Invite Hens to a party' do
 
       @party = Party.last
       @user = User.last
-      # raise page.html.inspect
       @hen = Participant.new(email: 'hen@hen.com', first_name: 'Jen', last_name: 'Hen')
 
       @party.participants << @hen
@@ -29,9 +28,25 @@ describe 'Invite Hens to a party' do
 
     it 'should have an invite hens button' do
       visit party_path(@party)
-      # save_and_open_page
       click_link('Invite Hens')
       expect(current_path).to eq party_invitation_path(@party)
+    end
+
+    context 'invitation page' do
+
+      before(:each) do
+        visit party_invitation_path(@party)
+      end
+
+      it 'should let me write an email' do
+        fill_in 'Subject', with: 'Subject line'
+        fill_in 'Message', with: 'Special message to the hens'
+        click_button 'Send invitation'
+
+        expect(current_path).to eq party_path(@party)
+        expect(page).to have_css('.alert', text: 'Invitations successfully sent.')
+      end
+
     end
 
   end

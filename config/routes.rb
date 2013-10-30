@@ -15,7 +15,8 @@ HenParty::Application.routes.draw do
   end
   
   resources :parties
-  get 'parties/:id/invitation' => 'parties#invite', :as => 'party_invitation'
+  get 'parties/:id/invitation' => 'parties#invitation', :as => 'party_invitation'
+  post 'parties/:id/send_invitations' => 'parties#send_invitations', :as => 'send_party_invitations'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

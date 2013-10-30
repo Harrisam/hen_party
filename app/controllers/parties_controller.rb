@@ -1,6 +1,11 @@
 class PartiesController < ApplicationController
   before_filter :authenticate_user!, except: [:new, :create]
-  before_action :set_party, only: [:show, :edit, :update, :destroy, :invite]
+  before_action :set_party, only: [:show,
+                                   :edit,
+                                   :update,
+                                   :destroy,
+                                   :invitation,
+                                   :send_invitations]
   helper_method :party_and_user_errors
 
   # GET /parties
@@ -15,7 +20,12 @@ class PartiesController < ApplicationController
   end
 
   # GET /parties/1/invitation
-  def invite
+  def invitation
+  end
+
+  # POST /parties/1/send_invitations
+  def send_invitations
+    redirect_to @party, notice: 'Invitations successfully sent.'
   end
 
   # GET /parties/new
