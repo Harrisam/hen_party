@@ -1,11 +1,32 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @party.name %>
-</p>
+<p class="lead"><%=@party.name.capitalize%>'s Hen Party</p>
 
-<%= link_to 'Invite Hens', party_invitation_path(@party) %>
+<div id="accordion"> 
+	<h3>Participants</h3>
+		<div>
+			<% @party.participants.each do |f| %>
+				
+				<p><%= f.email %> | <%= f.first_name + " " + f.last_name %> </p>
+			<% end %>
+			<%= link_to 'Send invitations to participants', party_invitation_path(@party) %>
+		</div>
+		
 
-<%= link_to 'Edit', edit_party_path(@party) %> |
-<%= link_to 'Back', parties_path %>
+	<h3>Budgets</h3>
+		<div>	
+			<% @party.budgets.each do |f| %>	
+				<p><%= f.amount %></p>
+			<% end %>
+		</div>
+
+	<h3>Dates</h3>
+		<div>
+			<% @party.date_options.each do |f| %>
+				<p><%= f.start_date %> - <%= f.end_date %></p>
+			<% end %>
+		</div>
+	</div>
+
+<p><%= link_to 'Edit', edit_party_path(@party), class: 'btn btn-warning btn-lg' %> </p>
+<p><%= button_to "Delete Party", @party, :method=>:delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-danger btn-block btn-lg'%></p>

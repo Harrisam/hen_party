@@ -17,6 +17,7 @@ class PartiesController < ApplicationController
   # GET /parties/1
   # GET /parties/1.json
   def show
+    @party = Party.find params[:id]
   end
 
   # GET /parties/1/invitation
@@ -41,10 +42,20 @@ class PartiesController < ApplicationController
   def new
     @party = Party.new
     @user = User.new
+    1.times do
+    question = @party.budgets.build
+    end
+    1.times do
+    date_option = @party.date_options.build
+    end
+    1.times do
+    participant = @party.participants.build
+    end
   end
 
   # GET /parties/1/edit
   def edit
+    @party = Party.find params[:id]
   end
 
   # POST /parties
@@ -98,7 +109,7 @@ class PartiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def party_params
-      params.require(:party).permit(:name)
+      params.require(:party).permit(:name, budgets_attributes: [:id, :_destroy, :amount], participants_attributes: [:id, :_destroy, :email, :first_name, :last_name], date_options_attributes: [:id, :_destroy, :start_date, :end_date])
     end
 
     def user_params

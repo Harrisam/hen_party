@@ -1,0 +1,10 @@
+<fieldset>
+  <%= f.label :email, "email address" %>
+  <%= f.text_field :email %>
+  <%= f.label :first_name, "first name" %>
+  <%= f.text_field :first_name %>
+  <%= f.label :last_name, "last name" %>
+  <%= f.text_field :last_name %>
+  <%= f.hidden_field :_destroy %>
+  <%= link_to "remove", '#', class: "remove_fields" %>
+</fieldset>
