@@ -24,3 +24,8 @@ en:
   date:
     formats:
       default: "%-d/%-m/%y"
+  number:
+    currency:
+      format:
+        unit: "£"
+        precision: 0

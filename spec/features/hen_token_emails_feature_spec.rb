@@ -98,6 +98,7 @@ describe 'Invite Hens to a party' do
 
         before(:each) do
           @party.date_options.create(start_date: '2014/01/01', end_date: '2014/02/02')
+          @party.budgets.create(amount: 250)
           visit join_party_path(@hen.token)
         end
 
@@ -107,6 +108,10 @@ describe 'Invite Hens to a party' do
 
         it 'should show the date options' do
           expect(page).to have_content '1/1/14 - 2/2/14'
+        end
+
+        it 'should show the budget options' do
+          expect(page).to have_content '250'
         end
 
       end
