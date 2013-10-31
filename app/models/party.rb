@@ -13,7 +13,7 @@ class Party < ActiveRecord::Base
 	def assign_chief_hen(user)
 		self.user = user
 		user.chief_hen = true
-		user.save
+		user.save and save
 	end
 	
 end
