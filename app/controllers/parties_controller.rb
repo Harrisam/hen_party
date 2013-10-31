@@ -39,6 +39,16 @@ class PartiesController < ApplicationController
     redirect_to @party, notice: 'Invitations successfully sent.'
   end
 
+  def join
+    @participant = Participant.find_by_token(params[:token])
+    
+    if @participant
+      @party = @participant.party
+    else
+      render :text => "Sorry, we can't find your party.", :status => '404', :layout => true
+    end
+  end
+
   # GET /parties/new
   def new
     @party = Party.new

@@ -29,8 +29,8 @@ describe 'Invite Hens to a party' do
   context 'when I have added Hens to my party' do
     
     before(:each) do
-      @hen = Participant.new(email: 'hen@hen.com', first_name: 'Jen', last_name: 'Hen')
-      @party.participants << @hen
+      @participant = Participant.new(email: 'hen@hen.com', first_name: 'Jen', last_name: 'Hen')
+      @party.participants << @participant
     end
 
     it 'should have one hen' do
@@ -75,9 +75,55 @@ describe 'Invite Hens to a party' do
         end
 
         it 'should have the link with token to join the party' do
-          expect(emails.last.body).to include @hen.token
+          expect(emails.last.body).to include @participant.token
         end
       
+      end
+
+    end
+
+    context 'join page' do
+
+      context 'when an invalid token is used' do
+
+        it 'should show a party not found message' do
+          visit join_party_path('123')
+
+          expect(page).to have_content "Sorry, we can't find your party."
+        end
+
+      end
+
+      context 'when a valid token is used' do
+
+        before(:each) do
+          @party.date_options.create(start_date: '2014/01/01', end_date: '2014/02/02')
+          @party.budgets.create(amount: 250)
+          visit join_party_path(@participant.token)
+        end
+
+        it 'should show party sign up details' do
+          expect(page).to have_content "Welcome to #{@party.name}"
+        end
+
+        it 'should show the date options' do
+          expect(page).to have_content '1/1/14 - 2/2/14'
+        end
+
+        it 'should show the budget options' do
+          expect(page).to have_content '250'
+        end
+
+        it 'should have an opt out for each date option' do
+          save_and_open_page
+          check "I can't make this date"
+        end
+
+        it 'should have an opt out for each budget option' do
+          save_and_open_page
+          check "I can't afford this budget"
+        end
+
       end
 
     end
