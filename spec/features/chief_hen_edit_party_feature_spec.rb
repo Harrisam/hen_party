@@ -60,7 +60,7 @@ describe 'Edit Hen Party' do
       visit edit_party_path(@party)
       page.find('.AddBudgetOptions').click
     
-      fill_in "party_budgets_attributes_0_amount", :with => '500'
+      fill_in 'party[budgets_attributes][0][amount]', :with => '500'
          
       expect(page).to have_content '500'
     end
@@ -93,9 +93,9 @@ describe 'Edit Hen Party' do
 
      it 'should have participants' do
        visit edit_party_path(@party)
-       expect(page).to have_content 'email address'
-       expect(page).to have_content 'first name'
-       expect(page).to have_content 'last name'
+       expect(page).to have_css 'input#party_participants_attributes_0_first_name'
+       expect(page).to have_css 'input#party_participants_attributes_0_last_name'
+       expect(page).to have_css 'input#party_participants_attributes_0_email'
     end
   end
   
