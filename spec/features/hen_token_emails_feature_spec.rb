@@ -82,6 +82,30 @@ describe 'Invite Hens to a party' do
 
     end
 
+    context 'join page' do
+
+      context 'when an invalid token is used' do
+
+        it 'should show a party not found message' do
+          visit join_party_path('123')
+
+          expect(page).to have_content "Sorry, we can't find your party."
+        end
+
+      end
+
+      context 'when a valid token is used' do
+
+        it 'should show party sign up details' do
+          visit join_party_path(@hen.token)
+
+          expect(page).to have_content "Welcome to #{@party.name}"
+        end
+
+      end
+
+    end
+
   end
 
 end
