@@ -96,10 +96,17 @@ describe 'Invite Hens to a party' do
 
       context 'when a valid token is used' do
 
-        it 'should show party sign up details' do
+        before(:each) do
+          @party.date_options.create(start_date: '2014/01/01', end_date: '2014/02/02')
           visit join_party_path(@hen.token)
+        end
 
+        it 'should show party sign up details' do
           expect(page).to have_content "Welcome to #{@party.name}"
+        end
+
+        it 'should show the date options' do
+          expect(page).to have_content '1/1/14 - 2/2/14'
         end
 
       end

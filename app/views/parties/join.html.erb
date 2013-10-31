@@ -1,1 +1,8 @@
 <h1>Welcome to <%= @party.name %></h1>
+
+<h3>Date options</h3>
+<ul>
+  <% @party.date_options.each do |date_option| %>
+    <li><%= l date_option.start_date %> - <%= l date_option.end_date %></li>
+  <% end %>
+</ul>
