@@ -1,15 +1,25 @@
 <h1>Welcome to <%= @party.name %></h1>
 
-<h3>Date options</h3>
-<ul>
-  <% @party.date_options.each do |date_option| %>
-    <li><%= l date_option.start_date %> - <%= l date_option.end_date %></li>
-  <% end %>
-</ul>
+<%= form_for :response do |f| %>
+  <div class="well">
+    <h3>Date options</h3>
+      <% @party.date_options.each do |date_option| %>
+        <fieldset>
+          <%= f.label :date_option, "#{l date_option.start_date} - #{l date_option.end_date}" %>&nbsp;&nbsp;&nbsp;
+          <%= f.check_box :_destroy, id: "I can't make this date" %>
+          <%= f.label :_destroy, "I can't make this date" %>
+        </fieldset>
+      <% end %>
+  </div>
 
-<h3>Budget options</h3>
-<ul>
-  <% @party.budgets.each do |budget| %>
-    <li><%= number_to_currency budget.amount %></li>
-  <% end %>
-</ul>
+  <div class="well">
+    <h3>Budget options</h3>
+      <% @party.budgets.each do |budget| %>
+        <fieldset>
+          <%= f.label :budget, "#{number_to_currency budget.amount}" %>&nbsp;&nbsp;&nbsp;
+          <%= f.check_box :_destroy, id: "I can't afford this budget" %>
+          <%= f.label :_destroy, "I can't afford this budget" %>
+        </fieldset>
+      <% end %>
+  </div>
+<% end %>
