@@ -12,13 +12,16 @@ class PartiesController < ApplicationController
   # GET /parties
   # GET /parties.json
   def index
-    @parties = Party.all
+    @parties = current_user.parties.all
   end
 
   # GET /parties/1
   # GET /parties/1.json
   def show
     @party = Party.find params[:id]
+    if !current_user.parties.include?(@party)
+      render :text => "<h1>Sorry, you don't have access to this party.</h1>", :status => '404', :layout => true
+    end
   end
 
   # GET /parties/1/invitation
@@ -45,7 +48,7 @@ class PartiesController < ApplicationController
     if @participant
       @party = @participant.party
     else
-      render :text => "Sorry, we can't find your party.", :status => '404', :layout => true
+      render :text => "<h1>Sorry, we can't find your party.</h1>", :status => '404', :layout => true
     end
   end
 
@@ -76,9 +79,9 @@ class PartiesController < ApplicationController
     @user = User.new(user_params)
 
     respond_to do |format|
-      if @party.save && @user.save
+      if @user.save && @party.save
         @party.assign_chief_hen(@user)
-        sign_in @user
+        sign_in(@user)
         PartyInvitation.create_party_confirmation(@user, @party).deliver!
         format.html { redirect_to @party, notice: 'Party was successfully created.' }
         format.json { render action: 'show', status: :created, location: @party }
