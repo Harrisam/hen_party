@@ -1,10 +1,10 @@
 <%= form_for(@party) do |f| %>
-  <% if @party.errors.any? %>
+  <% if party_and_user_errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@party.errors.count, "error") %> prohibited this party from being saved:</h2>
+      <h2><%= pluralize(party_and_user_errors.count, "error") %> prohibited this party from being saved:</h2>
 
       <ul>
-      <% @party.errors.full_messages.each do |msg| %>
+      <% party_and_user_errors.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>

@@ -1,10 +1,10 @@
-<%= form_for @party do |f| %>
+<%= form_for @party, html: { class: 'form-inline', role: 'form' } do |f| %>
   
 <div class="well">
   <div class="form-group">
     <div class="field">
       <%= f.label :name %><br>
-      <%= f.text_field :name %>
+      <%= f.text_field :name, class: 'form-control', size: 50 %>
     </div>
   </div>
 </div>
@@ -13,8 +13,8 @@
     <div class="form-group">
       <%= f.fields_for :budgets do |builder| %>
         <%= render 'budget_fields', f: builder %>
-      <% end %> <br/>
-      <%= link_to_add_fields "Add Budget Options", f, :budgets %> <br/>
+      <% end %>
+      <%= link_to_add_fields "Add Budget Options", f, :budgets %>
     </div>
 </div>
 
@@ -23,7 +23,7 @@
     <%= f.fields_for :date_options do |builder| %>
       <%= render 'date_option_fields', f: builder %>
     <% end %> <br/>
-    <%= link_to_add_fields "Add Date Option", f, :date_options %> <br/>
+    <%= link_to_add_fields "Add Date Options", f, :date_options %> <br/>
   </div>
 </div>
 
@@ -38,6 +38,6 @@
 
   
   <div class="actions" >
-    <%= f.submit %>
+    <%= f.submit class: 'btn btn-default' %>
   </div>
 <% end %>

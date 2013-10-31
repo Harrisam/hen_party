@@ -115,12 +115,10 @@ describe 'Invite Hens to a party' do
         end
 
         it 'should have an opt out for each date option' do
-          save_and_open_page
           check "I can't make this date"
         end
 
         it 'should have an opt out for each budget option' do
-          save_and_open_page
           check "I can't afford this budget"
         end
 
