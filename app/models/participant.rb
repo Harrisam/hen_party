@@ -1,5 +1,6 @@
 class Participant < ActiveRecord::Base
 	belongs_to :party
+  has_one :response
   has_many :budgets, through: :responses
   has_many :date_options, through: :responses
 

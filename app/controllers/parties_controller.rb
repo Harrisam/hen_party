@@ -56,9 +56,10 @@ class PartiesController < ApplicationController
   end
 
   def save_response
+    # raise params.inspect
     @participant = Participant.find_by_token(params[:token])
     @response = Response.new(response_params)
-    # PartyInvitation.response_confirmation(@participant, @response).deliver!
+    PartyInvitation.response_confirmation(@participant, @response).deliver!
     render :text => "<h1>Your response has been well received, it is party time!</h1>", :layout => true
   end
 
