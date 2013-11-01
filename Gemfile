@@ -34,7 +34,7 @@ gem 'jbuilder', '~> 1.2'
 gem 'twitter-bootstrap-rails',
   github: 'seyhunak/twitter-bootstrap-rails',
   branch: 'bootstrap3'
-
+  
 # Haml for templating haiku
 gem 'haml'
 

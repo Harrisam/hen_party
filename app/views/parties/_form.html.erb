@@ -10,6 +10,15 @@
 </div>
 
 <div class="well">
+  <div class="form-group">
+    <%= f.fields_for :participants do |builder| %>
+      <%= render 'participant_fields', f: builder %>
+    <% end %><br/>
+    <%= link_to_add_fields "Add Participant", f, :participants %> <br/>
+  </div>
+</div>
+
+<div class="well">
     <div class="form-group">
       <%= f.fields_for :budgets do |builder| %>
         <%= render 'budget_fields', f: builder %>
@@ -27,14 +36,7 @@
   </div>
 </div>
 
-<div class="well">
-  <div class="form-group">
-    <%= f.fields_for :participants do |builder| %>
-      <%= render 'participant_fields', f: builder %>
-    <% end %><br/>
-    <%= link_to_add_fields "Add Participant", f, :participants %> <br/>
-  </div>
-</div>
+
 
   
   <div class="actions" >

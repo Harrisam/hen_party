@@ -1,33 +1,35 @@
-<p id="notice"><%= notice %></p>
+  <h1><%=@party.name.capitalize%> </h1>
+  
+  <div class="flex-grid">
+  	<div>
+      <h2>Participants</h2>
+      	<% @party.participants.each do |f| %>
+					<p><%= f.email %> | <%= f.first_name + " " + f.last_name %> </p>
+				<% end %>		
+    </div>
 
-<p class="lead"><%=@party.name.capitalize%></p>
-
-<div id="accordion"> 
-	<h3>Hens</h3>
 		<div>
-			<% @party.participants.each do |f| %>
-				
-				<p><%= f.email %> | <%= f.first_name + " " + f.last_name %> </p>
-			<% end %>
-			<% if @party.participants.count > 0 %>
-				<%= link_to 'Invite Hens', party_invitation_path(@party), class: 'btn btn-default btn-md' %>
-			<% end %>
-		</div>
-		
+      <h2>Budgets</h2>
+				<% @party.budgets.each do |f| %>
+					<div>	£<%= f.amount %></div>
+				<% end %>
+    </div>
 
-	<h3>Budgets</h3>
-		<div>	
-			<% @party.budgets.each do |f| %>	
-				<p><%= f.amount %></p>
-			<% end %>
-		</div>
+    <div>
+      <h2>Dates</h2>
+				<% @party.date_options.each do |f| %>
+					<div><%= f.start_date.strftime('%a %d %b %Y') %> - <%= f.end_date.strftime('%a %d %b %Y') %></div>
+				<% end %>
+    </div>
 
-	<h3>Dates</h3>
-		<div>
-			<% @party.date_options.each do |f| %>
-				<p><%= f.start_date %> - <%= f.end_date %></p>
-			<% end %>
-		</div>
-	</div>
 
-<p><%= link_to 'Add options', edit_party_path(@party), class: 'btn btn-default btn-lg' %> </p>
+  </div>
+
+	<p><%= link_to 'Add options', edit_party_path(@party), class: 'btn btn-default btn-lg' %> </p>
+		<% if @party.participants.count > 0 %>
+			<p>		<%= link_to 'Invite Hens', party_invitation_path(@party), class: 'btn btn-default btn-md' %> </p>
+		<% end %>
+</div>
+
+
+
