@@ -52,6 +52,10 @@ class PartiesController < ApplicationController
     end
   end
 
+  def save_response
+        
+  end
+
   # GET /parties/new
   def new
     @party = Party.new
