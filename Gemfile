@@ -60,6 +60,7 @@ group :development, :test do
   gem 'cucumber-rails', :require => false, git: 'https://github.com/cucumber/cucumber-rails.git'
   gem 'database_cleaner'
   gem 'launchy'
+  gem 'poltergeist'
 end
 
 # Use ActiveRecord to store session
