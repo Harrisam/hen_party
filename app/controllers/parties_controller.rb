@@ -1,5 +1,5 @@
 class PartiesController < ApplicationController
-  before_filter :authenticate_user!, except: [:new, :create]
+  before_filter :authenticate_user!, except: [:new, :create, :join]
   before_action :set_party, only: [:show,
                                    :edit,
                                    :update,

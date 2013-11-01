@@ -6,7 +6,7 @@
       <% @party.date_options.each do |date_option| %>
         <fieldset>
           <%= f.label :date_option, "#{l date_option.start_date} - #{l date_option.end_date}" %>&nbsp;&nbsp;&nbsp;
-          <%= f.check_box :_destroy, id: "I can't make this date" %>
+          <%= f.check_box :_destroy, id: "date_option_#{date_option.id}" %>
           <%= f.label :_destroy, "I can't make this date" %>
         </fieldset>
       <% end %>
@@ -17,7 +17,7 @@
       <% @party.budgets.each do |budget| %>
         <fieldset>
           <%= f.label :budget, "#{number_to_currency budget.amount}" %>&nbsp;&nbsp;&nbsp;
-          <%= f.check_box :_destroy, id: "I can't afford this budget" %>
+          <%= f.check_box :_destroy, id: "budget_#{budget.id}" %>
           <%= f.label :_destroy, "I can't afford this budget" %>
         </fieldset>
       <% end %>

@@ -2,6 +2,6 @@
 
 FactoryGirl.define do
   factory :budget do
-    integer ""
+    sequence(:amount) { |n| n * 100 }
   end
 end

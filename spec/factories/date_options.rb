@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :date_option do
-    start_date "2013-10-29"
-    end_date "2013-10-29"
+    sequence(:start_date) { |n| Date.today + n.days }
+    sequence(:end_date) { |n| Date.today + (n + 1).days }
   end
 end
