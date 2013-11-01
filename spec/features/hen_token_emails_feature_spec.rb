@@ -118,11 +118,11 @@ describe 'Invite Hens to a party' do
           expect(page).to have_content '250'
         end
 
-        it 'should have an opt out for each date option' do
+        it 'should have an opt in for each date option' do
           check "date_option_#{@date_option.id}"
         end
 
-        it 'should have an opt out for each budget option' do
+        it 'should have an opt in for each budget option' do
           check "budget_#{@budget.id}"
         end
 

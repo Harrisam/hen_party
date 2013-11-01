@@ -1,26 +1,31 @@
 <h1>Welcome to <%= @party.name %></h1>
 
 <%= form_for :response do |f| %>
+  
   <div class="well">
     <h3>Date options</h3>
+    <%= fields_for :date_options do |date_option_f| %>
       <% @party.date_options.each do |date_option| %>
         <fieldset>
-          <%= f.label :date_option, "#{l date_option.start_date} - #{l date_option.end_date}" %>&nbsp;&nbsp;&nbsp;
-          <%= f.check_box :_destroy, id: "date_option_#{date_option.id}" %>
-          <%= f.label :_destroy, "I can't make this date" %>
+          <%= date_option_f.label :date_option, "#{l date_option.start_date} - #{l date_option.end_date}" %>&nbsp;&nbsp;&nbsp;
+          <%= date_option_f.check_box :accepted, id: "date_option_#{date_option.id}" %>
+          <%= date_option_f.label :accepted, "I can make this date" %>
         </fieldset>
       <% end %>
+    <% end %>
   </div>
 
   <div class="well">
     <h3>Budget options</h3>
+    <%= fields_for :budgets do |budget_f| %>
       <% @party.budgets.each do |budget| %>
         <fieldset>
-          <%= f.label :budget, "#{number_to_currency budget.amount}" %>&nbsp;&nbsp;&nbsp;
-          <%= f.check_box :_destroy, id: "budget_#{budget.id}" %>
-          <%= f.label :_destroy, "I can't afford this budget" %>
+          <%= budget_f.label :budget, "#{number_to_currency budget.amount}" %>&nbsp;&nbsp;&nbsp;
+          <%= budget_f.check_box :accepted, id: "budget_#{budget.id}" %>
+          <%= budget_f.label :accepted, "I can afford this budget" %>
         </fieldset>
       <% end %>
+    <% end %>
   </div>
 
   <div class='form-group'>

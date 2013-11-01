@@ -1,5 +1,8 @@
 class PartiesController < ApplicationController
-  before_filter :authenticate_user!, except: [:new, :create, :join]
+  before_filter :authenticate_user!, except: [:new,
+                                              :create,
+                                              :join,
+                                              :save_response]
   before_action :set_party, only: [:show,
                                    :edit,
                                    :update,
@@ -53,7 +56,10 @@ class PartiesController < ApplicationController
   end
 
   def save_response
-        
+    @participant = Participant.find_by_token(params[:token])
+    @response = Response.new(response_params)
+    # PartyInvitation.response_confirmation(@participant, @response).deliver!
+    render :text => "<h1>Your response has been well received, it is party time!</h1>", :layout => true
   end
 
   # GET /parties/new
@@ -61,13 +67,9 @@ class PartiesController < ApplicationController
     @party = Party.new
     @user = User.new
     1.times do
-    question = @party.budgets.build
-    end
-    1.times do
-    date_option = @party.date_options.build
-    end
-    1.times do
-    participant = @party.participants.build
+      question = @party.budgets.build
+      date_option = @party.date_options.build
+      participant = @party.participants.build
     end
   end
 
@@ -141,6 +143,10 @@ class PartiesController < ApplicationController
 
     def party_and_user_errors
       @party.errors.full_messages + @user.errors.full_messages
+    end
+
+    def response_params
+      params.require(:response).permit(budgets_attributes: [:id, :accepted], date_options_attributes: [:id, :accepted])
     end
 
 end
