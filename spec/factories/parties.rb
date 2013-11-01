@@ -2,6 +2,6 @@
 
 FactoryGirl.define do
   factory :party do
-    name "MyString"
+    sequence(:name) {|n| "Bride#{n}"}
   end
 end

@@ -56,9 +56,10 @@ describe 'Edit Hen Party' do
 
   context 'when I add a budget to hen party' do
 
-    xit 'should display budget fields' do
+    xit 'should display budget fields', js: true  do
       visit edit_party_path(@party)
-      page.find('.AddBudgetOptions').click
+      click_link 'Add Budget Options'
+      # page.find('.AddBudgetOptions').click
     
       fill_in 'party[budgets_attributes][0][amount]', :with => '500'
          
@@ -66,7 +67,7 @@ describe 'Edit Hen Party' do
     end
 
 
-    xit 'should display date fields' do
+    xit 'should display date fields', js: true do
       visit edit_party_path(@party)
       page.find('.AddDateOption').click 
 

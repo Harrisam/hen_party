@@ -2,11 +2,11 @@
 
 FactoryGirl.define do
   factory :contact_detail do
-    address_line_1 "MyString"
-    address_line_2 "MyString"
-    address_post_code "MyString"
-    address_town "MyString"
-    phone_mobile "MyString"
-    phone_home "MyString"
+    sequence(address_line_1) {|n| "#{n} Bob Street"}
+    address_line_2 "Harrington"
+    address_post_code "W1 4EB"
+    address_town "London"
+    phone_mobile "07112567432"
+    phone_home "0207456224"
   end
 end
