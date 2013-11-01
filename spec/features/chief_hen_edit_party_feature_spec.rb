@@ -73,11 +73,11 @@ describe 'Edit Hen Party' do
       expect(page).to have_content 'Start Date'
     end
 
-    xit 'should display participant fields' do
+    xit 'should display participant fields', js: true do
       visit edit_party_path(@party)
-      page.find('.AddParticipant').click 
-      
-      expect(page).to have_css 'email address'
+      puts page.html
+      page.find('.add_participant').click 
+      expect(page).to have_css 'body'
     end
   end
 
