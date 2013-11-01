@@ -1,0 +1,13 @@
+<p>Just to confirm your choices:...</p>
+<h3>Dates you can make</h3>
+<ul>
+  <% @response.date_options.each do |date_option| %>
+    <li><%= "#{l date_option.start_date} - #{l date_option.end_date}" %></li>
+  <% end %>
+</ul>
+<h3>Budgets you can afford</h3>
+<ul>
+  <% @response.budgets.each do |budget| %>
+    <li><%= number_to_currency budget.amount %></li>
+  <% end %>
+</ul>

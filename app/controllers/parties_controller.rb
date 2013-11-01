@@ -50,16 +50,17 @@ class PartiesController < ApplicationController
     
     if @participant
       @party = @participant.party
+      @response = Response.new
     else
       render :text => "<h1>Sorry, we can't find your party.</h1>", :status => '404', :layout => true
     end
   end
 
   def save_response
-    # raise params.inspect
     @participant = Participant.find_by_token(params[:token])
-    @response = Response.new(response_params)
-    PartyInvitation.response_confirmation(@participant, @response).deliver!
+    @participant.response = Response.create!(params[:response].permit!)
+    # raise params.inspect
+    PartyInvitation.response_confirmation(@participant, @participant.response).deliver!
     render :text => "<h1>Your response has been well received, it is party time!</h1>", :layout => true
   end
 
@@ -147,7 +148,7 @@ class PartiesController < ApplicationController
     end
 
     def response_params
-      params.require(:response).permit(budgets_attributes: [:id, :accepted], date_options_attributes: [:id, :accepted])
+      params.require(:response).permit(:date_option_ids)
     end
 
 end
