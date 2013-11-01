@@ -21,8 +21,12 @@
 					<div><%= f.start_date.strftime('%a %d %b %Y') %> - <%= f.end_date.strftime('%a %d %b %Y') %></div>
 				<% end %>
     </div>
-
-
+  </div>
+  <div class="flex-grid">
+  	<div>
+      <h2>Contact Details</h2>
+		
+    </div>
   </div>
 
 	<p><%= link_to 'Add options', edit_party_path(@party), class: 'btn btn-default btn-lg' %> </p>

@@ -124,7 +124,7 @@ class PartiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def party_params
-      params.require(:party).permit(:name, budgets_attributes: [:id, :_destroy, :amount], participants_attributes: [:id, :_destroy, :email, :first_name, :last_name], date_options_attributes: [:id, :_destroy, :start_date, :end_date])
+      params.require(:party).permit(:name, budgets_attributes: [:id, :_destroy, :amount], participants_attributes: [:id, :_destroy, :email, :first_name, :last_name], date_options_attributes: [:id, :_destroy, :start_date, :end_date], contact_details_attributes: [:id, :_destroy, :address_line1, :address_line2, :address_post_code, :address_town, :phone_mobile, :phone_home])
     end
 
     def user_params

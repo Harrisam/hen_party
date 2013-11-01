@@ -23,8 +23,19 @@
 
 body {
   display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   color: white;
+  background: tomato;
 }
+
+footer {
+	background: gray;
+	height: 50px;
+	text-align: center;
+	padding: 15px;
+}
+
 
 a {
   cursor: pointer;
@@ -74,7 +85,7 @@ main h1 {
 .flex-grid > div {
   flex: 1;
   margin: 0 20px 20px 0;
-  padding: 15px;
+  padding: 15px 10px;
   border: 1px dotted lightgray;
   border-radius: 5%;
   font-family: 'ABeeZee', sans-serif;
@@ -127,4 +138,18 @@ main h1 {
   padding: 10px;
   font-size: 12px;
   border: 1px solid #ddd;
+}
+
+/* Medium screens */
+@media all and (max-width: 800px) {
+  .flex-grid {
+    justify-content: space-around;
+  }
+}
+
+/* Small screens */
+@media all and (max-width: 775px) {
+  .flex-grid {
+    flex-direction: column;
+  }
 }

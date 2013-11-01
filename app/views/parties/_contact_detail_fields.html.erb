@@ -1,0 +1,30 @@
+<fieldset>
+  <div class="form-group">
+    <%= f.label :address_line_1, "Address line 1", class: 'sr-only' %>
+    <%= f.text_field :address_line_1, class: 'form-control', placeholder: 'Address line 1' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :address_line_2, "Address line 2", class: 'sr-only' %>
+    <%= f.text_field :address_line_2, class: 'form-control', placeholder: 'Address line 2' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :address_town, "Address town", class: 'sr-only' %>
+    <%= f.text_field :address_town, class: 'form-control', placeholder: 'Town' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :address_post_code, "Address post code", class: 'sr-only' %>
+    <%= f.text_field :address_post_code, class: 'form-control', placeholder: 'Post code' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :phone_mobile, "Phone mobile", class: 'sr-only' %>
+    <%= f.text_field :phone_mobile, class: 'form-control', placeholder: 'Mobile number' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :phone_home, "Phone home", class: 'sr-only' %>
+    <%= f.text_field :phone_mobile, class: 'form-control', placeholder: 'Home number' %>
+  </div>
+  <div class="form-group">
+    <%= f.hidden_field :_destroy %>
+    <%= link_to "remove", '#', class: "remove_fields" %>
+  </div>
+</fieldset>
