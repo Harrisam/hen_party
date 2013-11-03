@@ -44,8 +44,11 @@ RSpec.configure do |config|
   #     --seed 1234
   # config.order = "random"
 
-  #FactoryGirl helper methods
+  # FactoryGirl helper methods
   config.include FactoryGirl::Syntax::Methods
+
+  # Devise helper methods
+  # config.include Devise::TestHelpers, :type => :controller
 
   config.before(:suite) do
     DatabaseCleaner.clean_with(:truncation)

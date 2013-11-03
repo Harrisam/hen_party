@@ -1,25 +1,35 @@
 <h1>Welcome to <%= @party.name %></h1>
 
-<%= form_for :response do |f| %>
+<%= form_for :response, url: save_party_response_path do |f| %>
+  
   <div class="well">
     <h3>Date options</h3>
       <% @party.date_options.each do |date_option| %>
         <fieldset>
-          <%= f.label :date_option, "#{l date_option.start_date} - #{l date_option.end_date}" %>&nbsp;&nbsp;&nbsp;
-          <%= f.check_box :_destroy, id: "I can't make this date" %>
-          <%= f.label :_destroy, "I can't make this date" %>
+          <%= label_tag "#{l date_option.start_date} - #{l date_option.end_date}" %>&nbsp;&nbsp;&nbsp;
+          <%= check_box_tag 'response[date_option_ids][]', date_option.id %>
+          <%= label_tag "I can make this date" %>
         </fieldset>
       <% end %>
   </div>
 
+  <% if false %>
   <div class="well">
     <h3>Budget options</h3>
+    <%= f.fields_for :budgets do |budget_f| %>
       <% @party.budgets.each do |budget| %>
         <fieldset>
-          <%= f.label :budget, "#{number_to_currency budget.amount}" %>&nbsp;&nbsp;&nbsp;
-          <%= f.check_box :_destroy, id: "I can't afford this budget" %>
-          <%= f.label :_destroy, "I can't afford this budget" %>
+          <%= budget_f.label :"#{budget.id}", "#{number_to_currency budget.amount}" %>&nbsp;&nbsp;&nbsp;
+          <%= budget_f.check_box :"#{budget.id}", id: "budget_#{budget.id}" %>
+          <%= budget_f.label :"#{budget.id}", "I can afford this budget" %>
         </fieldset>
       <% end %>
+    <% end %>
   </div>
+  <% end %>
+
+  <div class='form-group'>
+    <%= f.submit 'Join the party', :class => 'btn btn-default' %>
+  </div>
+
 <% end %>

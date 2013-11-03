@@ -1,5 +1,9 @@
 class Participant < ActiveRecord::Base
 	belongs_to :party
+  has_one :response
+  has_many :budgets, through: :responses
+  has_many :date_options, through: :responses
+
 	validates :email, :presence => true
 	validates :first_name, :presence => true
 	validates :last_name, :presence => true

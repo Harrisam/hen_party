@@ -84,6 +84,10 @@ describe 'Invite Hens to a party' do
 
     context 'join page' do
 
+      before(:each) do
+        click_link 'Sign out'
+      end
+
       context 'when an invalid token is used' do
 
         it 'should show a party not found message' do
@@ -97,8 +101,8 @@ describe 'Invite Hens to a party' do
       context 'when a valid token is used' do
 
         before(:each) do
-          @party.date_options.create(start_date: '2014/01/01', end_date: '2014/02/02')
-          @party.budgets.create(amount: 250)
+          @date_option = @party.date_options.create(start_date: '2014/01/01', end_date: '2014/02/02')
+          @budget = @party.budgets.create(amount: 250)
           visit join_party_path(@participant.token)
         end
 
@@ -114,12 +118,12 @@ describe 'Invite Hens to a party' do
           expect(page).to have_content '250'
         end
 
-        it 'should have an opt out for each date option' do
-          check "I can't make this date"
+        it 'should have an opt in for each date option' do
+          check "date_option_#{@date_option.id}"
         end
 
-        it 'should have an opt out for each budget option' do
-          check "I can't afford this budget"
+        it 'should have an opt in for each budget option' do
+          check "budget_#{@budget.id}"
         end
 
       end

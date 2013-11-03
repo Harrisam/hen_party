@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131031120231) do
+ActiveRecord::Schema.define(version: 20131101171632) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,13 @@ ActiveRecord::Schema.define(version: 20131031120231) do
   end
 
   add_index "budgets", ["party_id"], name: "index_budgets_on_party_id", using: :btree
+
+  create_table "budgets_responses", id: false, force: true do |t|
+    t.integer "response_id", null: false
+    t.integer "budget_id",   null: false
+  end
+
+  add_index "budgets_responses", ["budget_id", "response_id"], name: "index_budgets_responses_on_budget_id_and_response_id", using: :btree
 
   create_table "contact_details", force: true do |t|
     t.string   "address_line_1"
@@ -48,6 +55,13 @@ ActiveRecord::Schema.define(version: 20131031120231) do
   end
 
   add_index "date_options", ["party_id"], name: "index_date_options_on_party_id", using: :btree
+
+  create_table "date_options_responses", id: false, force: true do |t|
+    t.integer "response_id",    null: false
+    t.integer "date_option_id", null: false
+  end
+
+  add_index "date_options_responses", ["date_option_id", "response_id"], name: "index_date_options_responses_on_date_option_id_and_response_id", using: :btree
 
   create_table "participants", force: true do |t|
     t.string   "email"
@@ -74,6 +88,18 @@ ActiveRecord::Schema.define(version: 20131031120231) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "responses", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "date_option_id"
+    t.integer  "budget_id"
+    t.integer  "participant_id"
+  end
+
+  add_index "responses", ["budget_id"], name: "index_responses_on_budget_id", using: :btree
+  add_index "responses", ["date_option_id"], name: "index_responses_on_date_option_id", using: :btree
+  add_index "responses", ["participant_id"], name: "index_responses_on_participant_id", using: :btree
 
   create_table "sessions", force: true do |t|
     t.string   "session_id", null: false
