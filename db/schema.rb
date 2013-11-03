@@ -92,13 +92,9 @@ ActiveRecord::Schema.define(version: 20131101171632) do
   create_table "responses", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "date_option_id"
-    t.integer  "budget_id"
     t.integer  "participant_id"
   end
 
-  add_index "responses", ["budget_id"], name: "index_responses_on_budget_id", using: :btree
-  add_index "responses", ["date_option_id"], name: "index_responses_on_date_option_id", using: :btree
   add_index "responses", ["participant_id"], name: "index_responses_on_participant_id", using: :btree
 
   create_table "sessions", force: true do |t|

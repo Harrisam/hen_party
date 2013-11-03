@@ -1,32 +1,30 @@
 <h1>Welcome to <%= @party.name %></h1>
 
-<%= form_for :response, url: save_party_response_path do |f| %>
+<%= form_for :response, url: save_party_response_path, html: { role: 'form' } do |f| %>
   
   <div class="well">
     <h3>Date options</h3>
-      <% @party.date_options.each do |date_option| %>
-        <fieldset>
-          <%= label_tag "#{l date_option.start_date} - #{l date_option.end_date}" %>&nbsp;&nbsp;&nbsp;
-          <%= check_box_tag 'response[date_option_ids][]', date_option.id %>
-          <%= label_tag "I can make this date" %>
-        </fieldset>
-      <% end %>
-  </div>
-
-  <% if false %>
-  <div class="well">
-    <h3>Budget options</h3>
-    <%= f.fields_for :budgets do |budget_f| %>
-      <% @party.budgets.each do |budget| %>
-        <fieldset>
-          <%= budget_f.label :"#{budget.id}", "#{number_to_currency budget.amount}" %>&nbsp;&nbsp;&nbsp;
-          <%= budget_f.check_box :"#{budget.id}", id: "budget_#{budget.id}" %>
-          <%= budget_f.label :"#{budget.id}", "I can afford this budget" %>
-        </fieldset>
-      <% end %>
+    <% @party.date_options.each do |date_option| %>
+      <div class="form-group">
+        <%= label_tag "#{l date_option.start_date} - #{l date_option.end_date}" %>
+        &nbsp;&nbsp;&nbsp;
+        <%= check_box_tag 'response[date_option_ids][]', date_option.id, false, id: "date_option_#{date_option.id}" %>
+        <%= label_tag "I can make this date" %>
+      </div>
     <% end %>
   </div>
-  <% end %>
+
+  <div class="well">
+    <h3>Budget options</h3>
+    <% @party.budgets.each do |budget_option| %>
+      <div class="form-group">
+        <%= label_tag "#{number_to_currency budget_option.amount}" %>
+        &nbsp;&nbsp;&nbsp;
+        <%= check_box_tag 'response[budget_option_ids][]', budget_option.id, false, id: "budget_option_#{budget_option.id}" %>
+        <%= label_tag "I can afford this budget" %>
+      </div>
+    <% end %>
+  </div>
 
   <div class='form-group'>
     <%= f.submit 'Join the party', :class => 'btn btn-default' %>

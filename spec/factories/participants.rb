@@ -2,8 +2,8 @@
 
 FactoryGirl.define do
   factory :participant do
+    sequence(:first_name) { |n| "Joe#{n}" }
+    sequence(:last_name) { |n| "Bloggs#{n}"}
     sequence(:email) { |n| 'participant#{n}@email.com'}
-    password 'password'
-    password_confirmation 'password'
   end
 end

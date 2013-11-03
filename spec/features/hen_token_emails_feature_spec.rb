@@ -123,7 +123,7 @@ describe 'Invite Hens to a party' do
         end
 
         it 'should have an opt in for each budget option' do
-          check "budget_#{@budget.id}"
+          check "budget_option_#{@budget.id}"
         end
 
       end
