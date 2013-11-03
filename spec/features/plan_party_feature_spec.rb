@@ -18,6 +18,12 @@ describe 'Plan a Hen Party' do
     click_link 'Plan this party'
     expect(current_path).to eq plan_party_path(@party)
   end
+
+  it 'link back to the show page' do
+    visit plan_party_path(@party)
+    click_link 'See party details'
+    expect(current_path).to eq party_path(@party)
+  end
   
   context 'plan page' do
 
