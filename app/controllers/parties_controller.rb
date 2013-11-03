@@ -8,7 +8,8 @@ class PartiesController < ApplicationController
                                    :update,
                                    :destroy,
                                    :invitation,
-                                   :send_invitations]
+                                   :send_invitations,
+                                   :plan]
   helper_method :party_and_user_errors
   helper_method :send_email
 
@@ -62,6 +63,9 @@ class PartiesController < ApplicationController
     # raise params.inspect
     PartyInvitation.response_confirmation(@participant, @participant.response).deliver!
     render :text => "<h1>Your response has been well received, it is party time!</h1>", :layout => true
+  end
+
+  def plan
   end
 
   # GET /parties/new
