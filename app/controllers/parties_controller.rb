@@ -66,6 +66,8 @@ class PartiesController < ApplicationController
   end
 
   def plan
+    @party = Party.find params[:id]
+    @participants = @party.participants
   end
 
   # GET /parties/new
