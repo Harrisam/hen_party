@@ -140,6 +140,15 @@ main h1 {
   border: 1px solid #ddd;
 }
 
+.chart div {
+  font: 10px sans-serif;
+  background-color: steelblue;
+  text-align: right;
+  padding: 3px;
+  margin: 1px;
+  color: white;
+}
+
 /* Medium screens */
 @media all and (max-width: 800px) {
   .flex-grid {

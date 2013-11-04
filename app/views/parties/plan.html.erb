@@ -1,14 +1,18 @@
 <h1>Plan <%= @party.name %></h1>
 
-<% @party.participants.each do |f|%>
-	<p><%= f.email %><p>
-	<% f.response.budgets.each do |b| %>
-		<p><%= b.amount %><p>	
+<div class='chart'>
+	<% @party.participants.each do |f|%>
+		<% f.response.budgets.each do |b| %>
+			<div style="width: 100px;"><%= b.amount %></div>	
 	<% f.response.date_options.each do |b| %>
 		<p><%= b.start_date %> - <%= b.start_date %><p>	
 	<% end %>
 	<% end %>
 	<%end %>
+</p>
+
+
+
 	
 
 
@@ -16,3 +20,5 @@
 
 
 <p><%= link_to 'See party details', party_path(@party), class: 'btn btn-default btn-lg' %></p>
+
+
