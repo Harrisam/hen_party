@@ -44,14 +44,12 @@ gem 'devise'
 # RestClient to send POST requests to Mailgun
 gem 'rest-client'
 
-<<<<<<< HEAD
 # D3.js for data visualisation
 
 gem 'd3-rails'
-=======
+
 # Allows for very easy programmatic access to the InvisibleHand API from Ruby
 gem 'invisiblehand'
->>>>>>> 9f06dc74dda51f010b3321128716d14635f64d8a
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
