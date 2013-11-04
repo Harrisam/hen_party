@@ -78,6 +78,8 @@ GEM
       gherkin (~> 2.12.1)
       multi_json (>= 1.7.5, < 2.0)
       multi_test (>= 0.0.2)
+    d3-rails (3.3.7)
+      railties (>= 3.1)
     database_cleaner (1.2.0)
     devise (3.1.1)
       bcrypt-ruby (~> 3.0)
@@ -249,6 +251,7 @@ DEPENDENCIES
   capybara
   coffee-rails (~> 4.0.0)
   cucumber-rails!
+  d3-rails
   database_cleaner
   devise
   factory_girl_rails

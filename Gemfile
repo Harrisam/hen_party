@@ -44,6 +44,10 @@ gem 'devise'
 # RestClient to send POST requests to Mailgun
 gem 'rest-client'
 
+# D3.js for data visualisation
+
+gem 'd3-rails'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
