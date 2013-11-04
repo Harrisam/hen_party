@@ -11,7 +11,8 @@ class PartiesController < ApplicationController
                                    :destroy,
                                    :invitation,
                                    :send_invitations,
-                                   :plan]
+                                   :plan,
+                                   :product_search]
   before_action :get_best_price_pages, only: [:plan]
   helper_method :party_and_user_errors
   helper_method :send_email
@@ -69,6 +70,12 @@ class PartiesController < ApplicationController
   end
 
   def plan
+  end
+
+  def product_search
+    search_terms = params[:product][:search]
+    @product_search_results = get_product_search_results(search_terms)
+    render 'plan'
   end
 
   # GET /parties/new
@@ -170,6 +177,15 @@ class PartiesController < ApplicationController
       products.each do |product|
         @best_price_pages << product.pages.min_by { |page| page.price + page.pnp  }
       end
+    end
+
+    def get_product_search_results(search_terms)
+      @api ||= invisible_hand_api
+      search_results = @api.products(:query => "galaxy",    # Search term
+                                     :sort => "popularity", # What to order results by
+                                     :order => "desc",      # Direction to order results by
+                                     :size => "3")          # Number of results to return
+      search_results.reject { |result| result.title == "" }
     end
 
     def invisible_hand_api
