@@ -1,3 +1,5 @@
+require 'invisiblehand'
+
 class PartiesController < ApplicationController
   before_filter :authenticate_user!, except: [:new,
                                               :create,
