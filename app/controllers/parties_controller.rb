@@ -166,26 +166,28 @@ class PartiesController < ApplicationController
     end
 
     def get_best_price_pages
-      product_ids = { kit:          '02aecf7f1570ea714fdc00bf581ee66c',
-                      shera:        'ff1cb21c78cfcaaddf58e445d2f24b56',
-                      gay_bf:       '1f96b711b43040e94ebaa0ff42ac0195',
-                      l_plates:     '18688049702bbfcc4f90602b57191970',
-                      penis_straws: 'cd3c4f335954d2b5171ce0265871f96d' }
-      products = product_ids.values.map { |id| product_details(id) }
+      products = { kit:          '02aecf7f1570ea714fdc00bf581ee66c',
+                   shera:        'ff1cb21c78cfcaaddf58e445d2f24b56',
+                   gay_bf:       '1f96b711b43040e94ebaa0ff42ac0195',
+                   l_plates:     '18688049702bbfcc4f90602b57191970',
+                   penis_straws: 'cd3c4f335954d2b5171ce0265871f96d' }
+      @best_price_pages = best_pages(products.values)
+    end
 
-      @best_price_pages = []
-      products.each do |product|
-        @best_price_pages << product.pages.min_by { |page| page.price + page.pnp  }
+    def best_pages(product_ids)
+      products = product_ids.map { |id| product_details(id) }
+      products.inject([]) do |best_pages, product|
+        best_pages << product.pages.min_by { |page| page.price + page.pnp  }
       end
     end
 
-    def get_product_search_results(search_terms)
+    def get_product_search_results(search_term)
       @api ||= invisible_hand_api
-      search_results = @api.products(:query => "galaxy",    # Search term
+      search_results = @api.products(:query => search_term,    # Search term
                                      :sort => "popularity", # What to order results by
                                      :order => "desc",      # Direction to order results by
                                      :size => "3")          # Number of results to return
-      search_results.reject { |result| result.title == "" }
+      best_pages(search_results.map { |product| product.id })
     end
 
     def invisible_hand_api
