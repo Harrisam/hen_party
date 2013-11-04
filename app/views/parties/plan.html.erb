@@ -1,22 +1,22 @@
 <h1>Plan <%= @party.name %></h1>
+	<div class="flex-grid">
+		<div class='chart transbox' >
+		  <h2>Budget Results</h2>
+		  	<% if @budget_options.nil? %>
+		  		<p>No budgets voted for yet!</p>
+		  	<% else %>
+		  		<% @budget_options.each do | budget | %>
+						<p>£<%= budget %></p>
+						<div style="width: <%=@budget_responses.count(budget) + 10%>%;"><%= @budget_responses.count(budget) %></div><br/>
+					<%end %>
+				<%end%>
+		</div><br/>
+			<div class='chart transbox' >
+		  <h2>Date Results</h2>
+		</div><br/>
+	</div>
+	</div>
 
-<div class='chart'>
-	<% @party.participants.each do |f|%>
-		<% f.response.budgets.each do |b| %>
-			<div style="width: 100px;"><%= b.amount %></div>	
-	<% f.response.date_options.each do |b| %>
-		<p><%= b.start_date %> - <%= b.start_date %><p>	
-	<% end %>
-	<% end %>
-	<%end %>
-</p>
-
-
-
-	
-
-
-    
 
 
 <p><%= link_to 'See party details', party_path(@party), class: 'btn btn-default btn-lg' %></p>

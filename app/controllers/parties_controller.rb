@@ -68,6 +68,8 @@ class PartiesController < ApplicationController
   def plan
     @party = Party.find params[:id]
     @participants = @party.participants
+    @budget_responses = budget_responses
+    @budget_options = budget_options 
   end
 
   # GET /parties/new
@@ -155,6 +157,24 @@ class PartiesController < ApplicationController
 
     def response_params
       params.require(:response).permit(:date_option_ids)
+    end
+
+    def budget_options
+      unless  @party.budgets.nil? 
+        @party.budgets.each do |party_b|
+          @budget_options.nil? ? @budget_options = [party_b.amount] : @budget_options << party_b.amount
+        end
+      end
+      @budget_options
+    end
+
+    def budget_responses
+      @party.participants.each do |party_participants|
+        party_participants.response.budgets.each do |budget_response|
+          @budget_responses.nil? ? @budget_responses = [budget_response.amount] : @budget_responses << budget_response.amount
+        end
+      end
+      @budget_responses
     end
 
 end

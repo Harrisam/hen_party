@@ -16,7 +16,6 @@ jQuery ->
 
 
   chart = d3.select("body").append("div").attr("class", "chart")
-  x = d3.scale.linear().domain([0, d3.max(data)]).range(["0px", "420px"])
-  chart.selectAll("div").data(data).enter().append("div").style("width", x).text String
+  chart.selectAll("div").data(data).enter().append("div").text String
 
  

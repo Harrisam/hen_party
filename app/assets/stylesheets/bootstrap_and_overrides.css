@@ -15,37 +15,41 @@
   box-sizing: border-box;
 }
 
+
 :before, :after {
   display: block;
   position: absolute;
 }
 
+h2 {
+  color: orange;
+}
 
 body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  color: white;
-  background: tomato;
+  color: gray;
+  background: white;
 }
 
 footer {
 	background: gray;
-	height: 50px;
+	height: 100px;
 	text-align: center;
-	padding: 15px;
+	padding: 2%;
 }
 
 
 a {
   cursor: pointer;
-  color: white;
+  color: gray;
   opacity: 0.8;
 }
 
 a:hover{
 	opacity: 1;
-	color: white;
+	color: gray;
 	text-decoration: none;
 }
 
@@ -53,29 +57,21 @@ ul {
   list-style: none;
 }
 
-.well {
-	background: tomato;
-}
-
-.form-group {
-	background: tomato;
-}
-
 main {
   flex: 1;
-  padding: 25px;
-  background: tomato;
+  padding: 3%;
 }
 
 main h1 {
-  height: 80px;
-  margin: 40px 25px 15px -25px;
-  padding: 0 25px;
-  line-height: 76px;
-  font-size: 30px;
+  height: 100%;
+  margin: 5% 4% 3% -4%;
+  padding: 0% 3% 3% 3%;
+  line-height: 100%;
+  font-size: 200%;
   font-weight: 300;
   font-family: 'Crafty Girls', cursive;
   letter-spacing: 0.1em;
+  color: orange;
 }
 
 .flex-grid {
@@ -84,10 +80,11 @@ main h1 {
 
 .flex-grid > div {
   flex: 1;
-  margin: 0 20px 20px 0;
-  padding: 15px 10px;
-  border: 1px dotted lightgray;
-  border-radius: 5%;
+  margin: 0 3% 3% 0;
+  padding: 3% 2%;
+  color: gray;
+  border: 2px lightgray;
+  border-radius: 2%;
   font-family: 'ABeeZee', sans-serif;
   
 }
@@ -97,57 +94,51 @@ main h1 {
 }
 
 .flex-grid h2 {
-  margin: -15px -15px 15px -15px;
-  padding: 12px 15px;
-  font-size: 16px;
+  margin: -3% -3% 3% -3%;
+  padding: 2% 2%;
+  font-size: 150%;
+  text-align: center;
   font-weight: 300;
   font-family: 'ABeeZee', sans-serif;
-  text-transform: uppercase;
-  letter-spacing: .5em;
+  letter-spacing: .1em;
+  border-bottom-style: inset;
+ 
 }
 
 .flex-grid li {
   position: relative;
-  margin: 0 0 10px;
-  padding: 0 0 0 25px;
+  margin: 0 0 2%;
+  padding: 0 0 0 2%;
 }
 
 .flex-grid li:before {
   content: '\f00c';
-  font: normal 16px;
+  font: normal 100%;
   font-family: 'ABeeZee', sans-serif;
   top: 0;
   left: 0;
   color: #5b5;
 }
 
-.flex-grid table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.flex-grid table tr:nth-child(odd) {
-  background: #f9f9f9;
-}
-
-.flex-grid table tr:nth-child(even) {
-  background: #fff;
-}
-
-.flex-grid table td {
-  padding: 10px;
-  font-size: 12px;
-  border: 1px solid #ddd;
-}
-
 .chart div {
-  font: 10px sans-serif;
-  background-color: steelblue;
+  font: 90% sans-serif;
+  display: float;
+  background-color: orange;
   text-align: right;
-  padding: 3px;
-  margin: 1px;
+  padding: 0;
+  padding-right: 0.2%;
+  margin: 0.5%;
   color: white;
 }
+
+.chart p {
+  font: 100% sans-serif;
+  text-align: left;
+  padding: 0;
+  margin: 0;
+  color: gray;
+}
+
 
 /* Medium screens */
 @media all and (max-width: 800px) {
