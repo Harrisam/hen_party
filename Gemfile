@@ -44,6 +44,9 @@ gem 'devise'
 # RestClient to send POST requests to Mailgun
 gem 'rest-client'
 
+# Allows for very easy programmatic access to the InvisibleHand API from Ruby
+gem 'invisiblehand'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false

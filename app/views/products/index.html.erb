@@ -1,0 +1,13 @@
+<ul>
+  <% @products.each do |product| %>
+    <li>
+      <h3><%= product.title %></h3>
+      <% product.pages.each do |page| %>
+        <div>Retailer <%= page.retailer_name %></div>
+        <div><%= number_to_currency page.price, precision: 2 %> + <%= number_to_currency page.pnp, precision: 2 %> = <%= number_to_currency((page.price + page.pnp), precision: 2) %></div>
+        <div><%= link_to 'Buy now', page.original_url, class: 'btn btn-default btn-lg' %></div>
+        <div><%= image_tag page.image_url, width: '200px', height: '200px' %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
