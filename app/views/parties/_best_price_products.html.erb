@@ -1,7 +1,7 @@
-<% @best_price_pages.each do |page| %>
-  <div class="row">
+<div class="row">
+  <% @best_price_pages.each do |page| %>
     <div class="col-sm-6 col-md-4" style="margin-bottom: 1em;">
-      <div class="thumbnail" style="min-height: 53px;">
+      <div class="thumbnail" style="min-height: 565px;">
         <%= image_tag page.image_url, width: '300px', height: '200px', class: 'img-rounded' %>
         <div class="caption">
           <h3><%= page.title %></h3>
@@ -18,5 +18,5 @@
         </div>
       </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>
