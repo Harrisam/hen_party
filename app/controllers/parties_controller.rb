@@ -12,8 +12,9 @@ class PartiesController < ApplicationController
                                    :invitation,
                                    :send_invitations,
                                    :plan,
-                                   :product_search]
-  before_action :get_best_price_pages, only: [:plan]
+                                   :product_search,
+                                   :accommodation_search]
+  # before_action :get_best_price_pages, only: [:plan]
   helper_method :party_and_user_errors
   helper_method :send_email
 
@@ -81,6 +82,12 @@ class PartiesController < ApplicationController
     # @product_search_results = get_product_search_results(search_terms)
     # render 'plan'
     redirect_to plan_party_path(@party)
+  end
+
+  def accommodation_search
+    search_terms = params[:accommodation]
+    @accommodation_results = get_accommodation_list(search_terms)
+    render 'plan'
   end
 
   # GET /parties/new
@@ -205,23 +212,41 @@ class PartiesController < ApplicationController
     end
 
     def get_product_search_results(search_term)
-      @api ||= invisible_hand_api
-      search_results = @api.products(:query => search_term,    # Search term
-                                     :sort => "popularity", # What to order results by
-                                     :order => "desc",      # Direction to order results by
-                                     :size => "3")          # Number of results to return
+      search_results = invisible_hand_api.products(
+                                     :query => search_term,
+                                     :sort => "popularity",
+                                     :order => "desc",
+                                     :size => "3")
       best_pages(search_results.map { |product| product.id })
     end
 
     def invisible_hand_api
-      InvisibleHand::API.new :app_id => ENV['INVISIBLE_HAND_APP_ID'],
-                             :app_key => ENV['INVISIBLE_HAND_APP_KEY'],
-                             :region => 'uk'
+      @invisible_hand_api ||= InvisibleHand::API.new(
+                                :app_id => ENV['INVISIBLE_HAND_APP_ID'],
+                                :app_key => ENV['INVISIBLE_HAND_APP_KEY'],
+                                :region => 'uk')
     end
 
     def product_details(product_id)
-      @api ||= invisible_hand_api
-      @api.product(product_id)
+      invisible_hand_api.product(product_id)
+    end
+
+    def expedia_api
+      @expedia_api ||= Expedia::Api.new
+    end
+
+    def get_accommodation_list(search_terms)
+      api_request = {
+        numberOfResults:  5,
+        countryCode:      'GB',
+        city:             search_terms[:city],
+        propertyCategory: search_terms[:property_category],
+        arrivalDate:      l(search_terms[:arrival_date].to_date, format: :us),
+        departureDate:    l(search_terms[:departure_date].to_date, format: :us),
+        maxRate:          search_terms[:max_rate] * 2
+      }
+      api_response = expedia_api.get_list(api_request)
+      accommodation_list = api_response.body["HotelListResponse"]["HotelList"]["HotelSummary"]
     end
 
 end

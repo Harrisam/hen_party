@@ -24,6 +24,7 @@ en:
   date:
     formats:
       default: "%-d/%-m/%y"
+      us: "%m/%d/%Y"
   number:
     currency:
       format:

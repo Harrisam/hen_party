@@ -51,6 +51,9 @@ gem 'd3-rails'
 # Allows for very easy programmatic access to the InvisibleHand API from Ruby
 gem 'invisiblehand'
 
+# Expedia API for accommodation search
+gem 'expedia'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false

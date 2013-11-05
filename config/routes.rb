@@ -20,8 +20,8 @@ HenParty::Application.routes.draw do
   get 'parties/join/:token' => 'parties#join', :as => 'join_party'
   post 'parties/join/:token' => 'parties#save_response', :as => 'save_party_response'
   get 'parties/:id/plan' => 'parties#plan', :as => 'plan_party'
-  post 'parties/:id/plan' => 'parties#product_search', :as => 'products_to_plan_party'
-
+  post 'parties/:id/plan/product_search' => 'parties#product_search', :as => 'products_to_plan_party'
+  post 'parties/:id/plan/accommodation_search' => 'parties#accommodation_search', :as => 'accommodation_to_plan_party'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
