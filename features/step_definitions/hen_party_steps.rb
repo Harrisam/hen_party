@@ -16,12 +16,15 @@ When(/^I click "(.*?)"$/) do |link_text|
 end
 
 Then(/^I should be signed in$/) do
-  expect(current_path).to eq root_path
+  expect(current_path).to eq party_path(Party.last)
+  expect(page).not_to have_link 'Sign in'
+  expect(page).to have_link 'Sign out'
 end
 
 Then(/^I should be signed out$/) do
-  expect(current_path).to eq root_path
-  expect(page).not_to have_link('Sign out')
+  expect(current_path).to eq new_user_session_path
+  expect(page).not_to have_link 'Sign out'
+  expect(page).to have_link 'Sign in'
 end
 
 Given(/^I have an account$/) do

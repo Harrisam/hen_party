@@ -3,16 +3,6 @@ HenParty::Application.routes.draw do
   root to: "welcome#homepage"
 
   devise_for :users, :skip => [:registrations]
-  # manually add some registration routes
-  as :user do
-    # get 'users/cancel' => 'devise/registrations#cancel', :as => 'cancel_user_registration'
-    # skip create
-    # skip new (i.e. 'users/sign_up')
-    # get 'users/edit' => 'devise/registrations#edit', :as => 'edit_user_registration'
-    # patch 'users' => 'devise/registrations#update'
-    # put 'users' => 'devise/registrations#update'
-    # delete 'users' => 'devise/registrations#destroy'
-  end
   
   resources :parties
   get 'parties/:id/invitation' => 'parties#invitation', :as => 'party_invitation'

@@ -11,5 +11,5 @@ Feature: Hen signs out
     Given I have an account
     And I have signed in
     When I click "Sign out"
-    Then I should be on the homepage
+    Then I should be on the sign in page
     And I should be signed out
