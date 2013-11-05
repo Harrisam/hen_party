@@ -24,6 +24,17 @@
 <div class="flex-grid">
   <div>
     <h2>Best prices to get your party started</h2>
+    <% if @product_search_results %>
+      <%= render 'product_search_results' %>
+    <% end %>
+    <%= form_for :product, html: { class: 'form-inline', role: 'form' } do |f| %>
+      <div class="form-group">
+        <%= f.label :search, class: 'sr-only' %>
+        <%= f.text_field :search, class: "form-control", size: 70, placeholder: "feather bowers, balloons, etc." %>
+      </div>
+      <%= f.submit 'Search', class: "btn btn-default" %>
+    <% end %>
+    <h3>Some suggestions for you</h3>
     <%= render 'best_price_products' %>
   </div>
 </div>

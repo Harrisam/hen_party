@@ -1,0 +1,22 @@
+<% @product_search_results.each do |page| %>
+  <div class="row">
+    <div class="col-sm-6 col-md-4" style="margin-bottom: 1em;">
+      <div class="thumbnail" style="min-height: 53px;">
+        <%= image_tag page.image_url, width: '300px', height: '200px', class: 'img-rounded' %>
+        <div class="caption">
+          <h3><%= page.title %></h3>
+          <p>
+            <dl>
+              <dt>Retailer</dt>
+              <dd><%= page.retailer_name %></dd>
+            </dl>
+            <h4><%= format_price(page) %></h4>
+          </p>
+          <p>
+            <%= link_to 'Buy now', page.original_url, class: 'btn btn-default btn-md' %>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
