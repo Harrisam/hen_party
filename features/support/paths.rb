@@ -24,6 +24,9 @@ module NavigationHelpers
     when /my hen party page/
       party_path(Party.last)
 
+    when /my edit hen party page/
+      edit_party_path(Party.last)
+
     else
       raise "Can't find mapping from \"#{page_name}\" to a path.\n" +
         "Now, go and add a mapping in #{__FILE__}"

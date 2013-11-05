@@ -12,5 +12,5 @@ Feature: Create a Hen Party
     Given I am on the new hen party page
     When I submit the new hen party form with valid details
     Then I should see a welcome message
-    And I should be on my hen party page
+    And I should be on my edit hen party page
     And I should receive a confirmation email

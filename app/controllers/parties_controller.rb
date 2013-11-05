@@ -123,8 +123,8 @@ class PartiesController < ApplicationController
         @party.assign_chief_hen(@user)
         sign_in(@user)
         PartyInvitation.create_party_confirmation(@user, @party).deliver!
-        format.html { redirect_to @party, notice: 'Party was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @party }
+        format.html { redirect_to edit_party_path(@party), notice: 'Party was successfully created.' }
+        format.json { render action: 'edit', status: :created, location: @party }
       else
         format.html { render action: 'new' }
         format.json { render json: @party.errors, status: :unprocessable_entity }
