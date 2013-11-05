@@ -52,8 +52,9 @@ describe 'Invite Hens to a party' do
       end
 
       it 'should have a draft message' do
-        within 'textarea.invitation_message'
+        within 'textarea#invitation_message' do
           expect(page).to have_content 'Sam'
+        end
       end
 
       it 'should let me write an email' do
