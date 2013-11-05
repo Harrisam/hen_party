@@ -7,8 +7,32 @@ body.homepage {
   background-size: cover;
 }
 
-body.homepage h1 {
-  color: lightcoral;
-  text-shadow: 0 0 5px #333;
-  padding: 20px;
+body.homepage .col-lg-9 {
+	margin: 12%;
+	background-color: rgba(255, 255, 255, 0.6);
+	border-radius: 2px;
+	
 }
+
+body.homepage h1 {
+  color: #F06767;
+  width: 60%;
+  text-shadow: 1px 1px 5px #444;
+  padding: 3%;
+  margin: 2%;
+  font-size: 300%;
+}
+
+
+body.homepage .btn {
+	color: #fff;
+	margin: 5%;
+	border: solid 1px #f06767;
+	background: #f06767;
+	background: -webkit-gradient(linear, left top, left bottom, from(lightcoral), to(#f06767));
+	background: -moz-linear-gradient(top,  lightcoral,  #f06767);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#faa51a', endColorstr='#f47a20');
+
+
+}
+
