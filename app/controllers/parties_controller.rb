@@ -14,7 +14,9 @@ class PartiesController < ApplicationController
                                    :plan,
                                    :product_search,
                                    :accommodation_search]
-  # before_action :get_best_price_pages, only: [:plan]
+  before_action :get_best_price_pages, only: [:plan,
+                                              :product_search,
+                                              :accommodation_search]
   helper_method :party_and_user_errors
   helper_method :send_email
 
@@ -237,7 +239,7 @@ class PartiesController < ApplicationController
 
     def get_accommodation_list(search_terms)
       api_request = {
-        numberOfResults:  5,
+        numberOfResults:  20,
         countryCode:      'GB',
         city:             search_terms[:city],
         propertyCategory: search_terms[:property_category],
@@ -247,6 +249,13 @@ class PartiesController < ApplicationController
       }
       api_response = expedia_api.get_list(api_request)
       accommodation_list = api_response.body["HotelListResponse"]["HotelList"]["HotelSummary"]
+
+      accommodation_list.reject! do |accommodation|
+        rooms_available = accommodation['RoomRateDetailsList']['RoomRateDetails']['currentAllotment']
+        room_occupancy = accommodation['RoomRateDetailsList']['RoomRateDetails']['quotedRoomOccupancy']
+        rooms_available == 0 || room_occupancy * rooms_available < search_terms[:guests].to_i 
+      end
+      accommodation_list.take(5)
     end
 
 end

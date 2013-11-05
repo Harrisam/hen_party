@@ -48,7 +48,11 @@
       </div>
       <div class="form-group">
         <%= f.label :max_rate, 'Price per person' %>
-        <%= f.text_field :max_rate, class: "form-control", size: '10' %>
+        <%= f.text_field :max_rate, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :guests, 'No. of guests' %>
+        <%= f.text_field :guests, class: "form-control" %>
       </div>
       <%= f.submit 'Find accommodation', class: "btn btn-default" %>
     <% end %>
