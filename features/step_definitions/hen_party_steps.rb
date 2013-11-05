@@ -29,6 +29,8 @@ Given(/^I have an account$/) do
 
   fill_in 'Name', with: 'Bridezilla on the rampage'
 
+  fill_in 'First name', with: 'Sam'
+  fill_in 'Last name', with: 'Harris'
   fill_in 'Email', with: 'email@email.com'
   fill_in 'Password', with: 'password'
   fill_in 'Password confirmation', with: 'password'
