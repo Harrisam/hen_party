@@ -6,13 +6,21 @@
 		  		<p>No budgets voted for yet!</p>
 		  	<% else %>
 		  		<% @budget_options.each do | budget | %>
-						<p>£<%= budget %></p>
-						<div style="width: <%=@budget_responses.count(budget) + 10%>%;"><%= @budget_responses.count(budget) %></div><br/>
+						<p>£<%= budget.amount %></p>
+						<div style="width: <%=@budget_responses.count(budget) + 10%>%;"><%= @budget_responses.count(budget.amount) %></div><br/>
 					<%end %>
 				<%end%>
 		</div><br/>
 			<div class='chart transbox' >
 		  <h2>Date Results</h2>
+		  <% if @date_options.nil? %>
+		  		<p>No dates voted for yet!</p>
+		  	<% else %>
+		  		<% @date_options.each do | date_o | %>
+						<p><%= date_o.start_date.strftime('%d %b %Y') %> - <%= date_o.end_date.strftime('%d %b %Y') %></p>
+						<div style="width: <%=@date_responses.count(date_o.id) + 10%>%;"><%= @date_responses.count(date_o.id) %></div><br/>
+					<%end %>
+				<%end%>
 		</div><br/>
 	</div>
 	</div>

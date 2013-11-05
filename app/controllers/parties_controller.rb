@@ -73,7 +73,9 @@ class PartiesController < ApplicationController
     @party = Party.find params[:id]
     @participants = @party.participants
     @budget_responses = budget_responses
-    @budget_options = budget_options 
+    @budget_options = @party.budgets
+    @date_responses = date_responses
+    @date_options = @party.date_options
   end
 
   def product_search
@@ -170,22 +172,28 @@ class PartiesController < ApplicationController
       params.require(:response).permit(:date_option_ids)
     end
 
-    def budget_options
-      unless  @party.budgets.nil? 
-        @party.budgets.each do |party_b|
-          @budget_options.nil? ? @budget_options = [party_b.amount] : @budget_options << party_b.amount
-        end
-      end
-      @budget_options
-    end
-
     def budget_responses
+      # @budget_responses = @party.budgets.inject() { |totals, budget| totals[budget.amount] = budget.participants.size }
       @party.participants.each do |party_participants|
-        party_participants.response.budgets.each do |budget_response|
+        unless party_participants.response.nil? || party_participants.response.budgets.nil? 
+          party_participants.response.budgets.each do |budget_response|
           @budget_responses.nil? ? @budget_responses = [budget_response.amount] : @budget_responses << budget_response.amount
+          end
         end
       end
       @budget_responses
+    end 
+
+    def date_responses
+      # @budget_responses = @party.budgets.inject() { |totals, budget| totals[budget.amount] = budget.participants.size }
+      @party.participants.each do |party_participants|
+        unless party_participants.response.nil? || party_participants.response.date_options.nil? 
+          party_participants.response.date_options.each do |date_response|
+          @date_responses.nil? ? @date_responses = [date_response.id] : @date_responses << date_response.id
+          end
+        end
+      end
+      @date_responses
     end 
 
     def get_best_price_pages

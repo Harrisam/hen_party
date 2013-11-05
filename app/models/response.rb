@@ -3,6 +3,9 @@ class Response < ActiveRecord::Base
   has_and_belongs_to_many :budgets
   has_and_belongs_to_many :date_options
 
+  accepts_nested_attributes_for :budgets
+  accepts_nested_attributes_for :date_options
+
   def date_option_ids=(date_option_ids)
     date_options.clear
     date_option_ids.each do |id|
