@@ -77,9 +77,10 @@ class PartiesController < ApplicationController
   end
 
   def product_search
-    search_terms = params[:product][:search]
-    @product_search_results = get_product_search_results(search_terms)
-    render 'plan'
+    # search_terms = params[:product][:search]
+    # @product_search_results = get_product_search_results(search_terms)
+    # render 'plan'
+    redirect_to plan_party_path(@party)
   end
 
   # GET /parties/new
