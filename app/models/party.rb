@@ -5,6 +5,8 @@ class Party < ActiveRecord::Base
 	has_many :budgets, :dependent => :destroy
 	has_many :date_options, :dependent => :destroy
 	has_many :participants, :dependent => :destroy
+
+	validates :name, :presence => :true
 	
 	accepts_nested_attributes_for :budgets, allow_destroy: true, reject_if: lambda {|attributes| attributes['amount'].blank?}
 	accepts_nested_attributes_for :date_options, allow_destroy: true, reject_if: lambda {|attributes| attributes['start_date'].blank?}
