@@ -8,6 +8,9 @@ class User < ActiveRecord::Base
   has_many :parties
   has_many :contact_details
 
+  validates :first_name, :presence => true
+  validates :last_name, :presence => true
+
   accepts_nested_attributes_for :contact_details
   
 end

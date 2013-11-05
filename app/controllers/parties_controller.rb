@@ -122,7 +122,10 @@ class PartiesController < ApplicationController
       if @user.save && @party.save
         @party.assign_chief_hen(@user)
         sign_in(@user)
-        PartyInvitation.create_party_confirmation(@user, @party).deliver!
+        begin
+          PartyInvitation.create_party_confirmation(@user, @party).deliver!
+        rescue
+        end
         format.html { redirect_to edit_party_path(@party), notice: 'Party was successfully created.' }
         format.json { render action: 'edit', status: :created, location: @party }
       else
@@ -164,7 +167,7 @@ class PartiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def party_params
-      params.require(:party).permit(:name, budgets_attributes: [:id, :_destroy, :amount], participants_attributes: [:id, :_destroy, :email, :first_name, :last_name], date_options_attributes: [:id, :_destroy, :start_date, :end_date])
+      params.require(:party).permit(:name, budgets_attributes: [:id, :_destroy, :amount], participants_attributes: [:id, :_destroy, :email, :first_name, :last_name, :konnection], date_options_attributes: [:id, :_destroy, :start_date, :end_date])
     end
 
     def user_params
@@ -213,7 +216,11 @@ class PartiesController < ApplicationController
                    gay_bf:       '1f96b711b43040e94ebaa0ff42ac0195',
                    l_plates:     '18688049702bbfcc4f90602b57191970',
                    penis_straws: 'cd3c4f335954d2b5171ce0265871f96d' }
-      @best_price_pages = best_pages(products.values)
+      begin
+        @best_price_pages = best_pages(products.values)
+      rescue
+        @best_price_pages = false
+      end
     end
 
     def best_pages(product_ids)

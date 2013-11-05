@@ -7,6 +7,8 @@ describe 'Edit Hen Party' do
 
     fill_in 'Name', with: 'Bridezilla on the rampage'
 
+    fill_in 'First name', with: 'Chief'
+    fill_in 'Last name', with: 'Hen'
     fill_in 'Email', with: 'email@email.com'
     fill_in 'Password', with: 'password'
     fill_in 'Password confirmation', with: 'password'
@@ -85,7 +87,10 @@ describe 'Edit Hen Party' do
   context 'when I have added Particpants to my party' do
     
     before(:each) do
-      @party.participants.create(email: 'hen@hen.com', first_name: 'Jen', last_name: 'Hen')
+      @party.participants.create(email: 'hen@hen.com',
+                                 first_name: 'Jen',
+                                 last_name: 'Hen',
+                                 konnection: 'relative')
     end
 
     it 'should have one participant' do
@@ -97,6 +102,7 @@ describe 'Edit Hen Party' do
        expect(page).to have_css 'input#party_participants_attributes_0_first_name'
        expect(page).to have_css 'input#party_participants_attributes_0_last_name'
        expect(page).to have_css 'input#party_participants_attributes_0_email'
+       expect(page).to have_css 'input#party_participants_attributes_0_konnection'
     end
   end
   
