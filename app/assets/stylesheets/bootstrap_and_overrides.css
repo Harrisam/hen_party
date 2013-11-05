@@ -28,6 +28,7 @@
 
 }
 
+
 .sign-up:hover {
   opacity: 1;
   color: white;
@@ -97,6 +98,7 @@ main h1 {
 .col-lg-9 {
   background-color: white;
   padding: 0 5%;
+  width: 100%;
 }
 .flex-grid {
   display: flex;
