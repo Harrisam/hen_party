@@ -25,6 +25,7 @@ en:
     formats:
       default: "%-d/%-m/%y"
       us: "%m/%d/%Y"
+      uk: "%d/%m/%Y"
   number:
     currency:
       format:

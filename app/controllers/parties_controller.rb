@@ -90,6 +90,8 @@ class PartiesController < ApplicationController
 
   def accommodation_search
     search_terms = params[:accommodation]
+    @check_in = l(search_terms[:arrival_date].to_date, format: :uk)
+    @check_out = l(search_terms[:departure_date].to_date, format: :uk)
     @accommodation_results = get_accommodation_list(search_terms)
     render 'plan'
   end

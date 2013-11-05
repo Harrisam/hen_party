@@ -6,13 +6,14 @@
       </a>
       <div class="media-body">
         <% rooms_link_text = "See " + result['RoomRateDetailsList']['RoomRateDetails']['currentAllotment'].to_s + " rooms available" %>
-        <div class="pull-right"><%= link_to rooms_link_text, '#', class: 'btn btn-default btn-md' %></div>
+        <% room_link = "http://www.expedia.co.uk/h" + result['RoomRateDetailsList']['RoomRateDetails']['expediaPropertyId'].to_s + ".Hotel-Information?chkin=" + @check_in + "&chkout=" + @check_out + "&hiddenDateless=true#roomsAndRates" %>
+        <div class="pull-right"><%= link_to rooms_link_text, room_link, class: 'btn btn-default btn-md' %></div>
         <h4 class="media-heading"><%= result['name'].html_safe %></h4>
         <p>
           <%= image_tag result['tripAdvisorRatingUrl'] %>
           <%= result['tripAdvisorReviewCount'] %> reviews
         </p>
-        <h5>From <%= number_to_currency((result['lowRate'] / result['RoomRateDetailsList']['RoomRateDetails']['quotedRoomOccupancy']), precision: 2) %> per person</h5>
+        <h5>From <%= number_to_currency((result['lowRate'] / result['RoomRateDetailsList']['RoomRateDetails']['quotedRoomOccupancy']), precision: 2) %> per person per night</h5>
       </div>
     </li>
   <% end %>
