@@ -22,7 +22,7 @@
 }
 
 h2 {
-  color: orange;
+  color: lightcoral;
 }
 
 body {
@@ -71,7 +71,7 @@ main h1 {
   font-weight: 300;
   font-family: 'Crafty Girls', cursive;
   letter-spacing: 0.1em;
-  color: orange;
+  color: lightcoral;
 }
 
 .flex-grid {
@@ -123,7 +123,7 @@ main h1 {
 .chart div {
   font: 90% sans-serif;
   display: float;
-  background-color: orange;
+  background-color: lightcoral;
   text-align: right;
   padding: 0;
   padding-right: 0.2%;
