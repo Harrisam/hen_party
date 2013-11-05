@@ -26,6 +26,14 @@
       
       <%= fields_for @user do |user_f| %>
         <div class="form-group">
+          <%= user_f.label :first_name %><br />
+          <%= user_f.email_field :first_name, class: "form-control"  %>
+        </div>
+        <div class="form-group">
+          <%= user_f.label :last_name %><br />
+          <%= user_f.email_field :last_name, class: "form-control"  %>
+        </div>
+        <div class="form-group">
           <%= user_f.label :email %><br />
           <%= user_f.email_field :email, class: "form-control"  %>
         </div>

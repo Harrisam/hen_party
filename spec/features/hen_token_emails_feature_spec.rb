@@ -7,6 +7,8 @@ describe 'Invite Hens to a party' do
 
     fill_in 'Name', with: 'Bridezilla on the rampage'
 
+    fill_in 'First name', with: 'Sam'
+    fill_in 'Last name', with: 'Harris'
     fill_in 'Email', with: 'email@email.com'
     fill_in 'Password', with: 'password'
     fill_in 'Password confirmation', with: 'password'
@@ -47,6 +49,11 @@ describe 'Invite Hens to a party' do
 
       before(:each) do
         visit party_invitation_path(@party)
+      end
+
+      it 'should have a draft message' do
+        within 'textarea.invitation_message'
+          expect(page).to have_content 'Sam'
       end
 
       it 'should let me write an email' do

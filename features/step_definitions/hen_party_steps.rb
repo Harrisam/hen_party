@@ -50,6 +50,8 @@ end
 When(/^I submit the new hen party form with valid details$/) do
   fill_in 'Name', with: 'Bridezilla on the rampage'
 
+  fill_in 'First name', with: 'Sam'
+  fill_in 'Last name', with: 'Harris'
   fill_in 'Email', with: 'email@email.com'
   fill_in 'Password', with: 'password'
   fill_in 'Password confirmation', with: 'password'
@@ -84,6 +86,8 @@ end
 
 Then(/^I should receive a confirmation email$/) do
   expect(emails.last.subject).to include 'Welcome to Hen Party'
+  expect(emails.last.body).to include 'Sam'
   expect(emails.last.body).to include 'Bridezilla on the rampage'
+  expect(emails.last.body).to have_link "Plan Bridezilla on the rampage"
   expect(emails.last.body).to include party_path(Party.last)
 end

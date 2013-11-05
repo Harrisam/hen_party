@@ -21,7 +21,7 @@ describe 'Plan a Hen Party' do
 
   it 'link back to the show page' do
     visit plan_party_path(@party)
-    click_link 'See party details'
+    click_link 'View Party Details'
     expect(current_path).to eq party_path(@party)
   end
   
