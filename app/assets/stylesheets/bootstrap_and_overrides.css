@@ -15,6 +15,23 @@
   box-sizing: border-box;
 }
 
+.sign-up {
+  margin: 10%;
+  padding: 5%;
+  color: #fff;
+  border: solid 1px #f06767;
+  background: #f06767;
+  background: -webkit-gradient(linear, left top, left bottom, from(lightcoral), to(#f06767));
+  background: -moz-linear-gradient(top,  lightcoral,  #f06767);
+  filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#faa51a', endColorstr='#f47a20');
+  opacity: 0.7;
+
+}
+
+.sign-up:hover {
+  opacity: 1;
+  color: white;
+}
 
 :before, :after {
   display: block;
@@ -35,7 +52,7 @@ body {
 
 footer {
 	background: gray;
-	height: 100px;
+	height: 10%;
 	text-align: center;
   color: lightgray;
 	padding: 2%;
@@ -158,5 +175,13 @@ main h1 {
 @media all and (max-width: 775px) {
   .flex-grid {
     flex-direction: column;
+  }
+  .sign-up {
+    margin: 0%;
+    width: 100%;
+  }
+
+  footer {
+    height: 80px;
   }
 }
