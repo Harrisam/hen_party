@@ -31,7 +31,7 @@ describe 'Edit Hen Party' do
 
     it 'should have an Add Participants Link' do 
       visit edit_party_path(@party)
-      expect(page).to have_content 'Add Participant'
+      expect(page).to have_content 'Add Hen'
     end
   end
 
