@@ -1,0 +1,19 @@
+<ul class="media-list">
+  <% @accommodation_results.each do |result| %>
+    <li class="media">
+      <a class="pull-left" href="#">
+        <%= image_tag "http://images.travelnow.com#{result['thumbNailUrl']}", class: 'media-object' %>
+      </a>
+      <div class="media-body">
+        <% rooms_link_text = "See " + result['RoomRateDetailsList']['RoomRateDetails']['currentAllotment'].to_s + " rooms available" %>
+        <div class="pull-right"><%= link_to rooms_link_text, '#', class: 'btn btn-default btn-md' %></div>
+        <h4 class="media-heading"><%= result['name'].html_safe %></h4>
+        <p>
+          <%= image_tag result['tripAdvisorRatingUrl'] %>
+          <%= result['tripAdvisorReviewCount'] %> reviews
+        </p>
+        <h5>From <%= number_to_currency((result['lowRate'] / result['RoomRateDetailsList']['RoomRateDetails']['quotedRoomOccupancy']), precision: 2) %> per person</h5>
+      </div>
+    </li>
+  <% end %>
+</ul>
