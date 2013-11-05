@@ -1,3 +1,11 @@
+  <div class="btn-group">
+    <%= link_to 'Add Options', edit_party_path(@party), class: 'btn btn-default btn-lg' %>
+      <% if @party.participants.count > 0 %>
+       <%= link_to 'Invite Hens', party_invitation_path(@party), class: 'btn btn-default btn-lg' %>
+      <% end %>
+      <%= link_to 'Plan this party', plan_party_path(@party), class: 'btn btn-default btn-lg' %>
+    </div>
+
   <h1><%=@party.name.capitalize%> </h1>
   
   <div class="flex-grid">
@@ -28,12 +36,4 @@
         <p>email: </p>
     </div>
   </div>
-	
-  <div class="btn-group">
-    <%= link_to 'Add Options', edit_party_path(@party), class: 'btn btn-default btn-lg' %>
-		  <% if @party.participants.count > 0 %>
-			 <%= link_to 'Invite Hens', party_invitation_path(@party), class: 'btn btn-default btn-lg' %>
-      <% end %>
-      <%= link_to 'Plan this party', plan_party_path(@party), class: 'btn btn-default btn-lg' %>
-    </div>
 </div>
