@@ -211,6 +211,10 @@ main h1 {
     width: 100%;
   }
 
+  body {
+    background: #F2F2F2;
+  }
+
   footer {
     height: 80px;
   }
