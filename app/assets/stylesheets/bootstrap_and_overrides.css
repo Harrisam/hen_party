@@ -182,6 +182,18 @@ main h1 {
   color: gray;
 }
 
+.btn-pink {
+  color: #fff;
+  margin: 5%;
+  border: solid 1px #f06767;
+  background: #f06767;
+  background: -webkit-gradient(linear, left top, left bottom, from(lightcoral), to(#f06767));
+  background: -moz-linear-gradient(top,  lightcoral,  #f06767);
+  filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#faa51a', endColorstr='#f47a20');
+
+
+}
+
 
 /* Medium screens */
 @media all and (max-width: 800px) {
