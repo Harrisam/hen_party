@@ -189,8 +189,6 @@ main h1 {
   background: -webkit-gradient(linear, left top, left bottom, from(lightcoral), to(#f06767));
   background: -moz-linear-gradient(top,  lightcoral,  #f06767);
   filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#faa51a', endColorstr='#f47a20');
-
-
 }
 
 
