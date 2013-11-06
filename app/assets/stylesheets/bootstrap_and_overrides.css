@@ -6,6 +6,8 @@
   =require twitter-bootstrap-static/fontawesome
   */
 
+@import 'bootstrap-responsive';
+
 @import url('http://fonts.googleapis.com/css?family=ABeeZee');
 @import url('http://fonts.googleapis.com/css?family=Crafty+Girls');
 @import url('http://fonts.googleapis.com/css?family=Cherry+Swash:400,700');
@@ -211,7 +213,7 @@ main h1 {
   body {
     background: #F2F2F2;
   }
-  
+
   main h1 {
     font-size: 300%;
 
