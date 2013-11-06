@@ -62,7 +62,8 @@ body {
   min-height: 100vh;
   color: gray;
   background: url('http://www.returnofkings.com/wp-content/uploads/2013/09/Joan-Crawford-Our-Dancing-Daughters-5.jpg');
-  background-size: 100%
+  background-size: 100%;
+  font-family: 'ABeeZee', sans-serif;
 }
 
 footer {
@@ -71,6 +72,8 @@ footer {
 	text-align: center;
   color: lightgray;
 	padding: 2%;
+  font-family: 'Bauhaus-Light';
+
 }
 
 
@@ -225,6 +228,15 @@ main h1 {
   
 }
 
-.navbar-header {
+.navbar {
+  opacity: 0.8;
+}
+
+.navbar-header, .collapse, .navbar-brand {
+  font-family: 'Bauhaus-Light';
+  font-size: 1.3em;
+  font-weight: 300%;
+  letter-spacing: 0.1em;
+  color: lightcoral;
   height: 50px;
 }
