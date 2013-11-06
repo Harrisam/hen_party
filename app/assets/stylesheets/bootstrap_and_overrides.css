@@ -12,7 +12,12 @@
 
 @font-face {
     font-family: "Bauhaus-Light";
-    src: url("../fonts/BauhausStd-Light.otf"); /* EOT file for IE */
+    src: url("/assets/BauhausStd-Light.otf"); /* EOT file for IE */
+ }
+
+@font-face {
+    font-family: "Bauhaus-Bold";
+    src: url("/assets/BauhausStd-bold.otf"); /* EOT file for IE */
  }
 
 * {
@@ -54,8 +59,8 @@ body {
   flex-direction: column;
   min-height: 100vh;
   color: gray;
-  background-image: url('http://www.returnofkings.com/wp-content/uploads/2013/09/Joan-Crawford-Our-Dancing-Daughters-5.jpg');
-  background-size: cover;
+  background: url('http://www.returnofkings.com/wp-content/uploads/2013/09/Joan-Crawford-Our-Dancing-Daughters-5.jpg');
+  background-size: 100%
 }
 
 footer {
@@ -95,7 +100,7 @@ main h1 {
   line-height: 100%;
   font-size: 500%;
   font-weight: 800;
-  font-family: 'Cherry Swash', cursive;
+  font-family: 'Bauhaus-Light';
   letter-spacing: 0.1em;
   color: lightcoral;
   text-shadow: 1px 1px 1px #444;
