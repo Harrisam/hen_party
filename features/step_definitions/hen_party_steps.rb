@@ -15,6 +15,11 @@ When(/^I click "(.*?)"$/) do |link_text|
   click_link link_text 
 end
 
+When(/^I enter a Bride's name$/) do
+  fill_in "Bride's name", with: 'Sam'
+end
+  
+
 Then(/^I should be signed in$/) do
   expect(current_path).to eq party_path(Party.last)
   expect(page).not_to have_link 'Sign in'

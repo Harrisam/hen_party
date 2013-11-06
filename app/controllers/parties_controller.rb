@@ -22,9 +22,9 @@ class PartiesController < ApplicationController
     end
   end
 
-  # GET /parties/new
+  # POST /parties/new
   def new
-    @party = Party.new
+    @party = Party.new(party_params)
     @user = User.new
     1.times do
       question = @party.budgets.build
