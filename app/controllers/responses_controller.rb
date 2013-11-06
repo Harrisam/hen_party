@@ -18,7 +18,7 @@ class ResponsesController < ApplicationController
       PartyInvitation.response_confirmation(@participant, @participant.response).deliver!
     rescue
     end
-    render :text => "<h1>Your response has been well received, it is party time!</h1>", :layout => true
+    render :text => "<h1>Your response has been well received, it's party time!</h1>", :layout => true
   end
 
 end
