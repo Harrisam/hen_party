@@ -9,8 +9,6 @@ class PartiesController < ApplicationController
                                    :edit,
                                    :update,
                                    :destroy,
-                                   :invitation,
-                                   :send_invitations,
                                    :plan,
                                    :product_search,
                                    :accommodation_search]
@@ -18,7 +16,6 @@ class PartiesController < ApplicationController
                                               :product_search,
                                               :accommodation_search]
   helper_method :party_and_user_errors
-  helper_method :send_email
 
   # GET /parties
   # GET /parties.json
@@ -35,24 +32,6 @@ class PartiesController < ApplicationController
     end
   end
 
-  # GET /parties/1/invitation
-  def invitation
-  end
-
-  # POST /parties/1/send_invitations
-  def send_invitations
-    subject = params[:invitation][:subject]
-    message = params[:invitation][:message]
-
-    participants = @party.participants
-    
-    participants.each do |participant|
-      PartyInvitation.invitation_email(participant, subject, message).deliver!
-    end
-
-    redirect_to @party, notice: 'Invitations successfully sent.'
-  end
-
   def join
     @participant = Participant.find_by_token(params[:token])
     
@@ -67,8 +46,10 @@ class PartiesController < ApplicationController
   def save_response
     @participant = Participant.find_by_token(params[:token])
     @participant.response = Response.create!(params[:response].permit!)
-    # raise params.inspect
-    PartyInvitation.response_confirmation(@participant, @participant.response).deliver!
+    begin
+      PartyInvitation.response_confirmation(@participant, @participant.response).deliver!
+    rescue
+    end
     render :text => "<h1>Your response has been well received, it is party time!</h1>", :layout => true
   end
 
@@ -167,15 +148,24 @@ class PartiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def party_params
-      params.require(:party).permit(:name, budgets_attributes: [:id, :_destroy, :amount], participants_attributes: [:id, :_destroy, :email, :first_name, :last_name, :konnection], date_options_attributes: [:id, :_destroy, :start_date, :end_date])
+      params.require(:party).permit(:name,
+                                    budgets_attributes:      [:id,
+                                                              :_destroy,
+                                                              :amount],
+                                    participants_attributes: [:id,
+                                                              :_destroy,
+                                                              :email,
+                                                              :first_name,
+                                                              :last_name,
+                                                              :konnection],
+                                    date_options_attributes: [:id,
+                                                              :_destroy,
+                                                              :start_date,
+                                                              :end_date])
     end
 
     def user_params
       params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
-    end
-
-    def invitation_params
-      params.require(:invitation).permit(:subject, :message)
     end
 
     def party_and_user_errors

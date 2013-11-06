@@ -42,17 +42,17 @@ describe 'Invite Hens to a party' do
     it 'should have an invite hens button' do
       visit party_path(@party)
       click_link('Invite Hens')
-      expect(current_path).to eq party_invitation_path(@party)
+      expect(current_path).to eq new_party_invitation_path(@party)
     end
 
     context 'invitation page' do
 
       before(:each) do
-        visit party_invitation_path(@party)
+        visit new_party_invitation_path(@party)
       end
 
       it 'should have a draft message' do
-        within 'textarea#invitation_message' do
+        within 'textarea#party_invitations_message' do
           expect(page).to have_content 'Sam'
         end
       end

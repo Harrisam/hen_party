@@ -3,22 +3,22 @@
   Send all the hens an email, you write the message and we'll add
   a special link for them to join your hen party.
 </p>
-<%= form_for :invitation, url: send_party_invitations_path,
+<%= form_for :party_invitations, url: party_invitations_path,
                           html: { role: 'form' } do |f| %>
   
   <div class='form-group'>
     <%= f.label :subject %><br />
     <%= f.text_field :subject,
-                     :placeholder => "#{@party.name}, it is time to celebrate!",
+                     :value => "#{@party.name} - it's time to celebrate!",
                      :autofocus => true,
                      :class => "form-control" %>
   </div>
   <div class='form-group'>
     <%= f.label :message %><br />
     <%= f.text_area :message,
-                   :value => render('draft'),
-                   :class => "form-control",
-                   :rows => 8 %>
+                    :value => render('draft_invitation'),
+                    :class => "form-control",
+                    :rows => 8 %>
   </div>
 
   <div class='form-group'>

@@ -4,9 +4,10 @@ HenParty::Application.routes.draw do
 
   devise_for :users, :skip => [:registrations]
   
-  resources :parties
-  get 'parties/:id/invitation' => 'parties#invitation', :as => 'party_invitation'
-  post 'parties/:id/send_invitations' => 'parties#send_invitations', :as => 'send_party_invitations'
+  resources :parties do
+    resources :invitations, :only => [:new, :create]
+  end
+
   get 'parties/join/:token' => 'parties#join', :as => 'join_party'
   post 'parties/join/:token' => 'parties#save_response', :as => 'save_party_response'
   get 'parties/:id/plan' => 'parties#plan', :as => 'plan_party'

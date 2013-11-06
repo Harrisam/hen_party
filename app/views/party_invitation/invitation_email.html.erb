@@ -1,2 +1,5 @@
-<%= @message %>
-<%= join_party_url token: @participant.token %>
+<%= @message.html_safe %>
+<p>
+  Your special link to join the party:<br />
+  <%= join_party_url token: @participant.token %>
+</p>

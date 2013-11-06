@@ -54,6 +54,9 @@ gem 'invisiblehand'
 # Expedia API for accommodation search
 gem 'expedia'
 
+# GitHub Markdown to process custom emails
+gem "github-markdown"
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
