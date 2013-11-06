@@ -27,11 +27,17 @@ Then(/^I should be signed in$/) do
   expect(current_path).to eq party_path(Party.last)
   expect(page).not_to have_link 'Sign in'
   expect(page).to have_link 'Sign out'
+  within '.navbar' do
+    expect(page).to have_content 'Hi Sam!'
+  end
 end
 
 Then(/^I should be signed out$/) do
   expect(current_path).to eq new_user_session_path
   expect(page).not_to have_link 'Sign out'
+  within '.navbar' do
+    expect(page).not_to have_content 'Hi Sam!'
+  end
   expect(page).to have_link 'Sign in'
 end
 
@@ -86,11 +92,17 @@ end
 Then(/^I should see a welcome message$/) do
   expect(page).to have_css('.alert', text: 'Party was successfully created.')
   expect(page).not_to have_link('Sign in')
+  within '.navbar' do
+    expect(page).to have_content 'Hi Sam!'
+  end
 end
 
 Then(/^I should see a welcome back message$/) do
   expect(page).to have_css('.alert', text: 'Signed in successfully.')
   expect(page).not_to have_link('Sign in')
+  within '.navbar' do
+    expect(page).to have_content 'Hi Sam!'
+  end
 end
 
 When(/^I try to access it$/) do

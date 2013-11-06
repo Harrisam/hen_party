@@ -6,6 +6,7 @@ Feature: Hen signs out
   Scenario: but not when signed out
     Given I am on the homepage
     Then I should not see "Sign out"
+    And I should not see "Hi Sam"
 
   Scenario: by visiting the welcome page
     Given I have an account

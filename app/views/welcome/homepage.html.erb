@@ -1,8 +1,8 @@
 <h1>Welcome to Hen Party App</h1>
-<%= form_for :party, url: new_party_path, html: { class: 'form-inline', role: 'form' } do |f| %>
+<%= form_for :party, url: new_party_path, html: { role: 'form' } do |f| %>
   <div class="form-group">
-    <%= f.label :brides_name, "I'm creating a Hen Party for" %>
-    <%= f.text_field :brides_name, class: "form-control", placeholder: "Bride's name" %>
+    <%= f.label :brides_name, "I'm creating a Hen Party for", class: 'input-lg' %>
+    <%= f.text_field :brides_name, class: "form-control input-lg", placeholder: "Bride's name", autofocus: true %>
   </div>
   <%= f.submit 'Create Party', class: 'btn btn-default btn-lg' %>
 <% end %>
