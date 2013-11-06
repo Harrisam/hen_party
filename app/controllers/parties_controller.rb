@@ -149,10 +149,6 @@ class PartiesController < ApplicationController
       @party.errors.full_messages + @user.errors.full_messages
     end
 
-    def response_params
-      params.require(:response).permit(:date_option_ids)
-    end
-
     def budget_responses
       # @budget_responses = @party.budgets.inject() { |totals, budget| totals[budget.amount] = budget.participants.size }
       @party.participants.each do |party_participants|
