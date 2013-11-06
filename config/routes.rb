@@ -8,12 +8,12 @@ HenParty::Application.routes.draw do
     resources :invitations, :only => [:new, :create]
   end
 
+  get 'parties/:party_id/plan' => 'plan#index', :as => 'plan_party'
+  post 'parties/:party_id/plan/product_search' => 'plan#product_search', :as => 'products_to_plan_party'
+  post 'parties/:party_id/plan/accommodation_search' => 'plan#accommodation_search', :as => 'accommodation_to_plan_party'
+
   get 'join/:token' => 'responses#new', :as => 'join_party'
   post 'join/:token' => 'responses#create', :as => 'save_party_response'
-
-  get 'parties/:id/plan' => 'parties#plan', :as => 'plan_party'
-  post 'parties/:id/plan/product_search' => 'parties#product_search', :as => 'products_to_plan_party'
-  post 'parties/:id/plan/accommodation_search' => 'parties#accommodation_search', :as => 'accommodation_to_plan_party'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
