@@ -8,6 +8,7 @@
 
 @import url('http://fonts.googleapis.com/css?family=ABeeZee');
 @import url('http://fonts.googleapis.com/css?family=Crafty+Girls');
+@import url('http://fonts.googleapis.com/css?family=Cherry+Swash:400,700');
 
 * {
   margin: 0;
@@ -87,9 +88,9 @@ main h1 {
   margin: 5% 4% 3% -4%;
   padding: 0% 3% 3% 3%;
   line-height: 100%;
-  font-size: 200%;
-  font-weight: 600;
-  font-family: 'Crafty Girls', cursive;
+  font-size: 500%;
+  font-weight: 800;
+  font-family: 'Cherry Swash', cursive;
   letter-spacing: 0.1em;
   color: lightcoral;
   text-shadow: 1px 1px 1px #444;
