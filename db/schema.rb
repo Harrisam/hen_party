@@ -85,11 +85,6 @@ ActiveRecord::Schema.define(version: 20131105212749) do
 
   add_index "parties", ["user_id"], name: "index_parties_on_user_id", using: :btree
 
-  create_table "plans", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "responses", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
