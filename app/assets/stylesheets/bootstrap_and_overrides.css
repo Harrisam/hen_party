@@ -10,6 +10,11 @@
 @import url('http://fonts.googleapis.com/css?family=Crafty+Girls');
 @import url('http://fonts.googleapis.com/css?family=Cherry+Swash:400,700');
 
+@font-face {
+    font-family: "Bauhaus-Light";
+    src: url("../fonts/BauhausStd-Light.otf"); /* EOT file for IE */
+ }
+
 * {
   margin: 0;
   padding: 0;
