@@ -1,6 +1,13 @@
+/*
 // Place all the styles related to the Welcome controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+*/
+
+@font-face {
+    font-family: "Bauhaus-Medium";
+    src: url("/assets/BauhausStd-Medium.otf"); /* EOT file for IE */
+ }
 
 body.homepage {
   background-image:url('http://www.returnofkings.com/wp-content/uploads/2013/09/Joan-Crawford-Our-Dancing-Daughters-5.jpg');
@@ -21,6 +28,7 @@ body.homepage h1 {
   padding: 3%;
   margin: 2%;
   font-size: 300%;
+  font-family: "Bauhaus-Medium";
 }
 
 
