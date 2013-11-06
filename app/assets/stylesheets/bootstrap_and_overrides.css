@@ -211,6 +211,11 @@ main h1 {
   body {
     background: #F2F2F2;
   }
+  
+  main h1 {
+    font-size: 300%;
+
+  } 
 
   footer {
     height: 80px;
