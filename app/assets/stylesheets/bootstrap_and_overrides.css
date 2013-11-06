@@ -8,6 +8,17 @@
 
 @import url('http://fonts.googleapis.com/css?family=ABeeZee');
 @import url('http://fonts.googleapis.com/css?family=Crafty+Girls');
+@import url('http://fonts.googleapis.com/css?family=Cherry+Swash:400,700');
+
+@font-face {
+    font-family: "Bauhaus-Light";
+    src: url("/assets/BauhausStd-Light.otf"); /* EOT file for IE */
+ }
+
+@font-face {
+    font-family: "Bauhaus-Bold";
+    src: url("/assets/BauhausStd-Bold.otf"); /* EOT file for IE */
+ }
 
 * {
   margin: 0;
@@ -48,8 +59,8 @@ body {
   flex-direction: column;
   min-height: 100vh;
   color: gray;
-  background-image: url('http://www.returnofkings.com/wp-content/uploads/2013/09/Joan-Crawford-Our-Dancing-Daughters-5.jpg');
-  background-size: cover;
+  background: url('http://www.returnofkings.com/wp-content/uploads/2013/09/Joan-Crawford-Our-Dancing-Daughters-5.jpg');
+  background-size: 100%
 }
 
 footer {
@@ -80,6 +91,8 @@ ul {
 main {
   flex: 1;
   padding: 3%;
+  margin-top: 80px;  
+
 }
 
 main h1 {
@@ -87,12 +100,13 @@ main h1 {
   margin: 5% 4% 3% -4%;
   padding: 0% 3% 3% 3%;
   line-height: 100%;
-  font-size: 200%;
-  font-weight: 600;
-  font-family: 'Crafty Girls', cursive;
+  font-size: 500%;
+  font-weight: 800;
+  font-family: 'Bauhaus-Light';
   letter-spacing: 0.1em;
   color: lightcoral;
   text-shadow: 1px 1px 1px #444;
+  text-align: center;
 
 }
 
@@ -100,6 +114,8 @@ main h1 {
   background-color: white;
   padding: 0 5%;
   width: 100%;
+  border-radius: 10px;
+  background-color: rgba(255,255,255,0.7);
 }
 .flex-grid {
   display: flex;
@@ -111,8 +127,9 @@ main h1 {
   padding: 3% 2%;
   color: gray;
   border: 2px lightgray;
-  border-radius: 2%;
+  border-radius: 10px;
   font-family: 'ABeeZee', sans-serif;
+  background-color: rgba(255,255,255,0.8);
   
 }
 
@@ -128,8 +145,7 @@ main h1 {
   font-weight: 300;
   font-family: 'ABeeZee', sans-serif;
   letter-spacing: .1em;
-  border-bottom-style: inset;
- 
+  border-bottom: 2px dotted gray;
 }
 
 .flex-grid li {
@@ -187,4 +203,6 @@ main h1 {
   footer {
     height: 80px;
   }
+
+  
 }
