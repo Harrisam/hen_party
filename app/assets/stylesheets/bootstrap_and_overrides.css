@@ -91,6 +91,7 @@ ul {
 main {
   flex: 1;
   padding: 3%;
+  margin-top: 80px;  
 }
 
 main h1 {
@@ -111,6 +112,7 @@ main h1 {
   background-color: white;
   padding: 0 5%;
   width: 100%;
+  border-radius: 10px;
 }
 .flex-grid {
   display: flex;
