@@ -224,3 +224,7 @@ main h1 {
   }
   
 }
+
+.navbar-header {
+  height: 50px;
+}
