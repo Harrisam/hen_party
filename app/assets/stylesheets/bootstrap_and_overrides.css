@@ -191,7 +191,6 @@ main h1 {
   filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#faa51a', endColorstr='#f47a20');
 }
 
-
 /* Medium screens */
 @media all and (max-width: 800px) {
   .flex-grid {
