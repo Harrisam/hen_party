@@ -32,11 +32,11 @@
   margin: 10%;
   padding: 5%;
   color: #fff;
-  border: solid 1px #f06767;
-  background: #f06767;
-  background: -webkit-gradient(linear, left top, left bottom, from(lightcoral), to(#f06767));
-  background: -moz-linear-gradient(top,  lightcoral,  #f06767);
-  filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#faa51a', endColorstr='#f47a20');
+  border: solid 1px #B31D7E;
+  background: #B31D7E;
+  background: -webkit-gradient(linear, left top, left bottom, from(#B31D7E), to(#B32480));
+  background: -moz-linear-gradient(top, #B31D7E,  #B32480);
+  filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#B31D7E', endColorstr='#B32480');
   opacity: 0.7;
 
 }
@@ -53,7 +53,7 @@
 }
 
 h2 {
-  color: lightcoral;
+  color: #B31D7E;
 }
 
 body {
@@ -109,7 +109,7 @@ main h1 {
   font-weight: 800;
   font-family: 'Bauhaus-Light';
   letter-spacing: 0.1em;
-  color: lightcoral;
+  color: #B31D7E;
   text-shadow: 1px 1px 1px #444;
   text-align: center;
 
@@ -171,7 +171,7 @@ main h1 {
 .chart div {
   font: 90% sans-serif;
   display: float;
-  background-color: lightcoral;
+  background-color: #B31D7E;
   text-align: right;
   padding: 0;
   padding-right: 0.2%;
@@ -189,11 +189,11 @@ main h1 {
 
 .btn-pink {
   color: #fff;
-  border: solid 1px #f06767;
-  background: #f06767;
-  background: -webkit-gradient(linear, left top, left bottom, from(lightcoral), to(#f06767));
-  background: -moz-linear-gradient(top,  lightcoral,  #f06767);
-  filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#faa51a', endColorstr='#f47a20');
+  border: solid 1px #B31D7E;
+  background: #B31D7E;
+  background: -webkit-gradient(linear, left top, left bottom, from(#B31D7E), to(#B32480));
+  background: -moz-linear-gradient(top,  #B31D7E,  #B32480);
+  filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='##B31D7E', endColorstr='#B32480');
 }
 
 /* Medium screens */
@@ -237,6 +237,6 @@ main h1 {
   font-size: 1.3em;
   font-weight: 300%;
   letter-spacing: 0.1em;
-  color: lightcoral;
+  color: #B31D7E;
   height: 50px;
 }
