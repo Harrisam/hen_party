@@ -8,7 +8,7 @@ describe PartiesController do
     end
 
     it "routes to #new" do
-      get("/parties/new").should route_to("parties#new")
+      post("/parties/new").should route_to("parties#new")
     end
 
     it "routes to #show" do
