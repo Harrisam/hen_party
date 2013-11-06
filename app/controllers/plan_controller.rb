@@ -57,11 +57,15 @@ class PlanController < ApplicationController
     end
 
     def get_best_price_pages
-      products = { kit:          '02aecf7f1570ea714fdc00bf581ee66c',
-                   shera:        'ff1cb21c78cfcaaddf58e445d2f24b56',
-                   gay_bf:       '1f96b711b43040e94ebaa0ff42ac0195',
-                   l_plates:     '18688049702bbfcc4f90602b57191970',
-                   penis_straws: 'cd3c4f335954d2b5171ce0265871f96d' }
+      products = { kit:            '02aecf7f1570ea714fdc00bf581ee66c',
+                   l_plates:       '18688049702bbfcc4f90602b57191970',
+                   balloons:       '70e8dc10e22d680e1e1525e240b9319e',
+                   truth_or_dare:  'd7bba5ce3d121cf37e63cf47891038cc',
+                   penis_straws:   'a08bc320d65897ca6afdc1d0180c2ea9',
+                   chocolate:      'e356c0566b45d9dd4627af77aa679192' }
+                   # memento_book:   '1c2745fac7f8117db364e0ddca0f1424',
+                   # shera:          'ff1cb21c78cfcaaddf58e445d2f24b56',
+                   # gay_bf:         '1f96b711b43040e94ebaa0ff42ac0195',
       begin
         @best_price_pages = best_pages(products.values)
       rescue
