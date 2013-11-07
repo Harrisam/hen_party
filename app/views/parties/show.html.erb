@@ -12,14 +12,14 @@
 		<div>
       <h2>Budgets</h2>
 				<% @party.budgets.each do |f| %>
-					<div>	£<%= f.amount %></div>
+					<div style="font-size: 120%;">	£<%= f.amount %></div>
 				<% end %>
     </div>
 
    <div>
       <h2>Dates</h2>
 				<% @party.date_options.each do |f| %>
-					<div><%= f.start_date.strftime('%a %d %b %Y') %> - <%= f.end_date.strftime('%a %d %b %Y') %></div>
+					<div style="font-size: 120%;"><%= f.start_date.strftime('%a %d %b %Y') %> &mdash; <%= f.end_date.strftime('%a %d %b %Y') %></div>
 				<% end %>
     </div>
   </div>
