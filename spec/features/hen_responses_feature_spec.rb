@@ -36,7 +36,7 @@ describe 'Hen responds to a party invitation' do
       check @budget_opt_in_checkbox
       check @date_option_opt_in_checkbox
       click_button "Join the party"
-      expect(page).to have_content "Your response has been well received, it is party time!"
+      expect(page).to have_content "Your response has been well received, it's party time!"
     end
 
     context 'should send me an email confirmation' do
