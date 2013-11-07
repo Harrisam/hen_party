@@ -12,12 +12,12 @@
 
 @font-face {
     font-family: "Bauhaus-Light";
-    src: url("/assets/BauhausStd-Light.otf"); /* EOT file for IE */
+    src: url("/assets/BauhausStd_Light.otf"); /* EOT file for IE */
  }
 
 @font-face {
     font-family: "Bauhaus-Bold";
-    src: url("/assets/BauhausStd-Bold.otf"); /* EOT file for IE */
+    src: url("/assets/BauhausStd_Bold.otf"); /* EOT file for IE */
  }
 
 * {
