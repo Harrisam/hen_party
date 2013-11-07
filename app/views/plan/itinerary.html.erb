@@ -37,6 +37,9 @@
     <%= javascript_include_tag "application" %>
   </head>
   <body>
+    <div class="btn-group">
+      <%= link_to 'Back to Plan', plan_party_path(@party), class: 'btn btn-default btn-lg' %>
+    </div>
     <h1>Here is the itinerary for <%= @party.name %></h1>
     <div class="flex-grid">
       <div class='chart transbox'>
