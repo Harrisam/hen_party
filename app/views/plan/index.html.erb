@@ -1,4 +1,10 @@
-<p><%= link_to 'View Party Details', party_path(@party), class: 'btn btn-default btn-lg' %></p>
+<div class="btn-group">
+  <%= link_to 'View Party Details', party_path(@party), class: 'btn btn-default btn-lg' %>
+    <% if @party.participants.count > 0 %>
+      <%= link_to 'Itinerary', plan_itinerary_path(@party), class: 'btn btn-default btn-lg' %>
+    <% end %>
+</div>
+
 <h1>Plan <%= @party.name %></h1>
 <div class="flex-grid">
   <div class='chart transbox'>

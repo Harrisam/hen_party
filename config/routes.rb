@@ -10,6 +10,8 @@ HenParty::Application.routes.draw do
   post 'parties/new' => 'parties#new', as: 'new_party'
 
   get 'parties/:party_id/plan' => 'plan#index', :as => 'plan_party'
+  get 'parties/:party_id/plan/itinerary' => 'plan#itinerary', :as => 'plan_itinerary'
+
   post 'parties/:party_id/plan/product_search' => 'plan#product_search', :as => 'products_to_plan_party'
   post 'parties/:party_id/plan/accommodation_search' => 'plan#accommodation_search', :as => 'accommodation_to_plan_party'
 

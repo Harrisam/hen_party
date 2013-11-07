@@ -26,6 +26,9 @@ class PlanController < ApplicationController
     render 'index'
   end
 
+  def itinerary
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_party
