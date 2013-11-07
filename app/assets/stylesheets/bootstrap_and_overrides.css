@@ -12,7 +12,7 @@
 
 @font-face {
     font-family: "Bauhaus-Light";
-    src: url("/assets/BauhausStd_Light.otf"); /* EOT file for IE */
+    src: url("https://github.com/Harrisam/hen_party/raw/master/app/assets/fonts/BauhausStd_Light.otf"); /* EOT file for IE */
  }
 
 @font-face {
