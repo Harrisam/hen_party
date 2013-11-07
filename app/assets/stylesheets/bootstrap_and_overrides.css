@@ -104,7 +104,7 @@ main h1 {
   margin: 5% 4% 3% -4%;
   padding: 0% 3% 3% 3%;
   line-height: 100%;
-  font-size: 500%;
+  font-size: 380%;
   font-weight: 800;
   font-family: 'Bauhaus-Light';
   letter-spacing: 0.1em;
@@ -195,10 +195,15 @@ main h1 {
   filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='##B31D7E', endColorstr='#B32480');
 }
 
+
 /* Medium screens */
 @media all and (max-width: 800px) {
   .flex-grid {
     justify-content: space-around;
+  }
+    main h1 {
+    font-size: 400%;
+
   }
 }
 
@@ -217,15 +222,24 @@ main h1 {
   }
 
   main h1 {
-    font-size: 300%;
+    font-size: 200%;
 
-  } 
+  }
+
+  .flex-grid h2 {
+    font-size: 110%%;
+  }
+
+  div {
+    text-align: center;
+  }
 
   footer {
     height: 80px;
   }
   
 }
+
 
 .navbar {
   opacity: 0.8;
