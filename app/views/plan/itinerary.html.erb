@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= content_for?(:title) ? yield(:title) : "HenParty" %></title>
+    <%= csrf_meta_tags %>
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js" type="text/javascript"></script>
+    <![endif]-->
+
+    <%= stylesheet_link_tag "application", :media => "all" %>
+
+    <!-- For third-generation iPad with high-resolution Retina display: -->
+    <!-- Size should be 144 x 144 pixels -->
+    <%= favicon_link_tag 'apple-touch-icon-144x144-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '144x144' %>
+
+    <!-- For iPhone with high-resolution Retina display: -->
+    <!-- Size should be 114 x 114 pixels -->
+    <%= favicon_link_tag 'apple-touch-icon-114x114-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '114x114' %>
+
+    <!-- For first- and second-generation iPad: -->
+    <!-- Size should be 72 x 72 pixels -->
+    <%= favicon_link_tag 'apple-touch-icon-72x72-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '72x72' %>
+
+    <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+    <!-- Size should be 57 x 57 pixels -->
+    <%= favicon_link_tag 'apple-touch-icon-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png' %>
+
+    <!-- For all other devices -->
+    <!-- Size should be 32 x 32 pixels -->
+    <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
+
+    <%= javascript_include_tag "application" %>
+  </head>
+  <body>
+    <h1>Here is the plan for <%= @party.name %></h1>
+    <div class="flex-grid">
+      <div class='chart transbox'>
+        <h2>The destination </h2>
+          <p>We are heading to ... (drumroll)</p></br>
+          <p>Manchester!</p>
+      </div>
+      <div class='chart transbox'>
+        <h2>Budget Results</h2>
+          <p>The budget for the party is £250</p></br>
+          <p>This includes hotel and activities. Extra will be needed for drinks.</p>
+      </div>
+      <div class='chart transbox'>
+        <h2>Date Results</h2>
+          <p>The date has been set!</p></br>
+          <p>We are heading out on the 15th of Feb, returning on the 17th!</p>
+      </div>
+    </div>
+
+    <div class="flex-grid">
+      <div>
+        <h2>Where we will be staying... </h2>
+        <li class="media">
+          <a class="pull-left" href="#">
+           <img alt="10959 27 t" class="media-object" src="http://images.travelnow.com/hotels/1000000/20000/11000/10959/10959_27_t.jpg">
+          </a>
+          <div class="media-body">
+            <div class="pull-right"><a class="btn btn-default btn-md" href="http://www.expedia.co.uk/h10959.Hotel-Information?chkin=15/02/2014&amp;chkout=17/02/2014&amp;hiddenDateless=true#roomsAndRates">See 50 rooms available</a></div>
+              <h4 class="media-heading">The Midland - Manchester</h4>
+              <p>
+                <img alt="4.5 12345 4" src="http://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/4.5-12345-4.gif">
+                1889 reviews
+              </p>
+          </div>
+        </li>
+      </div>
+    </div>
+
+    <div class="flex-grid">
+      <div>
+        <h2>For the people leaving from London... Trains </h2>
+        <li class="media">
+          <div class="media-body center">
+            <h4> Trains leaving from London Euston </h4>
+            <p> Train times: Most of use will be getting the 18:00, but here are the options.</p>
+            <p> <img src="/assets/trains.png"></p>
+          </div>
+        </li>
+      </div>
+    </div>
+
+    <div class="flex-grid">
+      <div>
+        <h2>And finally... a little map: </h2>
+        <li class="media">
+          <div class="media-body center">
+            <h4> Journey from the train station to the hotel. </h4>
+            <p> We will be meeting in the hotel bar for drinks before dinner... Gettign ready to surprise the bride</p>
+            <p><iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.co.uk/maps?f=d&amp;source=s_d&amp;saddr=Manchester+Piccadilly,+Manchester&amp;daddr=The+Midland,+Manchester,+Peter+Street,+Manchester&amp;hl=en&amp;geocode=FQAAMAMdhPXd_yGX_bQ_QXabLSnP9B0FlrF7SDGX_bQ_QXabLQ%3BFWH_LwMdWr7d_yENBDIUFPfa9CkLuYFzwrF7SDENBDIUFPfa9A&amp;aq=0&amp;oq=The+Midland+-+Manchester&amp;sll=53.477376,-2.230908&amp;sspn=0.009207,0.021458&amp;mra=ls&amp;ie=UTF8&amp;t=m&amp;ll=53.478265,-2.237692&amp;spn=0.008939,0.018282&amp;z=15&amp;output=embed"></iframe><br /><small><a href="https://maps.google.co.uk/maps?f=d&amp;source=embed&amp;saddr=Manchester+Piccadilly,+Manchester&amp;daddr=The+Midland,+Manchester,+Peter+Street,+Manchester&amp;hl=en&amp;geocode=FQAAMAMdhPXd_yGX_bQ_QXabLSnP9B0FlrF7SDGX_bQ_QXabLQ%3BFWH_LwMdWr7d_yENBDIUFPfa9CkLuYFzwrF7SDENBDIUFPfa9A&amp;aq=0&amp;oq=The+Midland+-+Manchester&amp;sll=53.477376,-2.230908&amp;sspn=0.009207,0.021458&amp;mra=ls&amp;ie=UTF8&amp;t=m&amp;ll=53.478265,-2.237692&amp;spn=0.008939,0.018282&amp;z=15" style="color:#0000FF;text-align:left">View Larger Map</a></small></p>
+          </div>
+        </li>
+      </div>
+    </div>
+
+  </body>  
