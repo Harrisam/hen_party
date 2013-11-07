@@ -17,7 +17,7 @@
 
 @font-face {
     font-family: "Bauhaus-Bold";
-    src: url("/assets/BauhausStd_Bold.otf"); /* EOT file for IE */
+    src: url("https://github.com/Harrisam/hen_party/raw/master/app/assets/fonts/BauhausStd_Bold.otf"); /* EOT file for IE */
  }
 
 * {
