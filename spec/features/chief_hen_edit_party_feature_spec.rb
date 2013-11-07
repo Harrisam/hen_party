@@ -3,20 +3,14 @@ require 'spec_helper'
 describe 'Edit Hen Party' do
 
   before(:each) do
-    visit new_party_path
+    @user = create(:user)
+    @party = create(:party)
+    @party.assign_chief_hen(@user)
 
-    fill_in 'Name', with: 'Bridezilla on the rampage'
-
-    fill_in 'First name', with: 'Chief'
-    fill_in 'Last name', with: 'Hen'
-    fill_in 'Email', with: 'email@email.com'
-    fill_in 'Password', with: 'password'
-    fill_in 'Password confirmation', with: 'password'
-
-    click_button 'Create Party'
-
-    @party = Party.last
-    @user = User.last
+    visit new_user_session_path
+    fill_in 'Email', with: @user.email
+    fill_in 'Password', with: @user.password
+    click_button 'Sign in'
   end
 
   context 'when I land on the edit hen party' do

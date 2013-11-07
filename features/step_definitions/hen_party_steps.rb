@@ -15,22 +15,38 @@ When(/^I click "(.*?)"$/) do |link_text|
   click_link link_text 
 end
 
+When(/^I press "(.*?)"$/) do |button_text|
+  click_button button_text
+end
+
+When(/^I enter a Bride's name$/) do
+  fill_in "Bride's name", with: 'Sam'
+end
+
 Then(/^I should be signed in$/) do
   expect(current_path).to eq party_path(Party.last)
   expect(page).not_to have_link 'Sign in'
   expect(page).to have_link 'Sign out'
+  within '.navbar' do
+    expect(page).to have_content 'Hi Sam!'
+  end
 end
 
 Then(/^I should be signed out$/) do
   expect(current_path).to eq new_user_session_path
   expect(page).not_to have_link 'Sign out'
+  within '.navbar' do
+    expect(page).not_to have_content 'Hi Sam!'
+  end
   expect(page).to have_link 'Sign in'
 end
 
 Given(/^I have an account$/) do
-  visit new_party_path
+  visit root_path
 
-  fill_in 'Name', with: 'Bridezilla on the rampage'
+  fill_in "Bride's name", with: 'Sam'
+
+  click_button 'Create Party'
 
   fill_in 'First name', with: 'Sam'
   fill_in 'Last name', with: 'Harris'
@@ -53,8 +69,6 @@ Given(/^I have signed in$/) do
 end
 
 When(/^I submit the new hen party form with valid details$/) do
-  fill_in 'Name', with: 'Bridezilla on the rampage'
-
   fill_in 'First name', with: 'Sam'
   fill_in 'Last name', with: 'Harris'
   fill_in 'Email', with: 'email@email.com'
@@ -78,11 +92,17 @@ end
 Then(/^I should see a welcome message$/) do
   expect(page).to have_css('.alert', text: 'Party was successfully created.')
   expect(page).not_to have_link('Sign in')
+  within '.navbar' do
+    expect(page).to have_content 'Hi Sam!'
+  end
 end
 
 Then(/^I should see a welcome back message$/) do
   expect(page).to have_css('.alert', text: 'Signed in successfully.')
   expect(page).not_to have_link('Sign in')
+  within '.navbar' do
+    expect(page).to have_content 'Hi Sam!'
+  end
 end
 
 When(/^I try to access it$/) do
@@ -90,9 +110,9 @@ When(/^I try to access it$/) do
 end
 
 Then(/^I should receive a confirmation email$/) do
-  expect(emails.last.subject).to include 'Welcome to Hen Party'
-  expect(emails.last.body).to include 'Sam'
-  expect(emails.last.body).to include 'Bridezilla on the rampage'
-  expect(emails.last.body).to have_link "Plan Bridezilla on the rampage"
+  expect(emails.last.subject).to have_content 'Welcome to Hen Party'
+  expect(emails.last.body).to have_content 'Sam'
+  expect(emails.last.body).to have_content "You have just created Sam's Hen Party"
+  expect(emails.last.body).to have_link "Plan Sam's Hen Party"
   expect(emails.last.body).to include party_path(Party.last)
 end

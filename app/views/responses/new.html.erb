@@ -2,8 +2,9 @@
 
 <%= form_for :response, url: save_party_response_path, html: { role: 'form' } do |f| %>
   
-  <div class="well">
-    <h3>Date options</h3>
+  <div class="flex-grid">
+  <div>
+    <h2>Date options</h2>
     <% @party.date_options.each do |date_option| %>
       <div class="form-group">
         <%= label_tag "#{l date_option.start_date} - #{l date_option.end_date}" %>
@@ -13,9 +14,10 @@
       </div>
     <% end %>
   </div>
-
-  <div class="well">
-    <h3>Budget options</h3>
+</div>
+  <div class="flex-grid">
+  <div>
+    <h2>Budget options</h2>
     <% @party.budgets.each do |budget_option| %>
       <div class="form-group">
         <%= label_tag "#{number_to_currency budget_option.amount}" %>
@@ -25,9 +27,10 @@
       </div>
     <% end %>
   </div>
-
-  <div class='form-group'>
-    <%= f.submit 'Join the party', :class => 'btn btn-default' %>
   </div>
+  <div class='form-group'>
+    <%= f.submit 'Join the party', :class => 'btn btn-default btn-pink' %><br/>
+  </div>
+  <br/>
 
 <% end %>

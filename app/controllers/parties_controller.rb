@@ -22,9 +22,10 @@ class PartiesController < ApplicationController
     end
   end
 
-  # GET /parties/new
+  # POST /parties/new
   def new
-    @party = Party.new
+    party_name = { name: "#{params[:party][:brides_name]}'s Hen Party" }
+    @party = Party.new(party_name)
     @user = User.new
     1.times do
       question = @party.budgets.build

@@ -11,47 +11,53 @@
     </div>
   <% end %>
 
-  <div class="row">
-    <div class="well">
-      <div class="form-group">
-        <%= f.label :name, 'Name of your party' %><br>
-        <%= f.text_field :name, class: "form-control", placeholder: "Sam's Hen Party" %>
+  <div class="flex-grid">
+    <div>
+      <div class="well">
+        <div class="form-group">
+          <%= f.label :name, 'Name your hen party' %><br>
+          <%= f.text_field :name, class: "form-control", placeholder: "Sam's Hen Party" %>
+        </div>
+        <div>
+          <ul>
+            <li>Three great things</li>
+            <li>about organising a hen party</li>
+            <li>with Hen Party App</li>
+          </ul>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="row">
-    <div class="well col-md-6">
-      <h4>Your details</h4>
-      
-      <%= fields_for @user do |user_f| %>
-        <div class="form-group">
-          <%= user_f.label :first_name %><br />
-          <%= user_f.text_field :first_name, class: "form-control"  %>
-        </div>
-        <div class="form-group">
-          <%= user_f.label :last_name %><br />
-          <%= user_f.text_field :last_name, class: "form-control"  %>
-        </div>
-        <div class="form-group">
-          <%= user_f.label :email %><br />
-          <%= user_f.email_field :email, class: "form-control"  %>
-        </div>
-        <div class="form-group">
-          <%= user_f.label :password %><br />
-          <%= user_f.password_field :password, class: "form-control"  %>
-        </div>
-        <div class="form-group">
-          <%= user_f.label :password_confirmation %><br />
-          <%= user_f.password_field :password_confirmation, class: "form-control"  %>
-        </div><br/>
-      <% end %>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="form-group">
-      <%= f.submit 'Create Party', class: 'btn btn-default btn-lg sign-up' %>
+    <div>
+      <div class="well">
+        <h4>Sign up</h4>
+        
+        <%= fields_for @user do |user_f| %>
+          <div class="form-group">
+            <%= user_f.label :first_name, class: 'sr-only' %>
+            <%= user_f.text_field :first_name, class: "form-control", placeholder: 'First name'  %>
+          </div>
+          <div class="form-group">
+            <%= user_f.label :last_name, class: 'sr-only' %>
+            <%= user_f.text_field :last_name, class: "form-control", placeholder: 'Last name' %>
+          </div>
+          <div class="form-group">
+            <%= user_f.label :email, class: 'sr-only' %>
+            <%= user_f.email_field :email, class: "form-control", placeholder: 'Email address' %>
+          </div>
+          <div class="form-group">
+            <%= user_f.label :password, class: 'sr-only' %>
+            <%= user_f.password_field :password, class: "form-control", placeholder: 'Password' %>
+          </div>
+          <div class="form-group">
+            <%= user_f.label :password_confirmation, class: 'sr-only' %>
+            <%= user_f.password_field :password_confirmation, class: "form-control", placeholder: 'Password confirmation' %>
+          </div>
+        <% end %>
+      </div>
+      <div class="form-group">
+        <%= f.submit 'Create Party', class: 'btn btn-default btn-lg sign-up' %>
+      </div>
     </div>
   </div>
 <% end %>

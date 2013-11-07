@@ -1,42 +1,48 @@
 <%= form_for @party, html: { class: 'form-inline', role: 'form' } do |f| %>
-  
-<div class="well">
-  <div class="form-group">
+
+  <div class="flex-grid">
     <div class="field">
       <%= f.label :name %><br>
       <%= f.text_field :name, class: 'form-control', size: 50 %>
     </div>
   </div>
-</div>
 
-<div class="well">
+<div class="flex-grid">
   <div class="form-group">
     <%= f.fields_for :participants do |builder| %>
-      <%= render 'participant_fields', f: builder %><br>
-    <% end %><br>
-    <%= link_to_add_fields "Add Hen", f, :participants %> <br>
-  </div>
+      <%= render 'participant_fields', f: builder %><br/>
+    <% end %>
+    <%= link_to_add_fields "Add Hen", f, :participants %> 
+  </div><br/>
 </div>
+<br/>
 
-<div class="well">
+<div class="flex-grid">
     <div class="form-group">
       <%= f.fields_for :budgets do |builder| %>
-        <%= render 'budget_fields', f: builder %><br>
-      <% end %> <br>
+        <%= render 'budget_fields', f: builder %><br/>
+      <% end %>
       <%= link_to_add_fields "Add Budget Options", f, :budgets %>
     </div>
 </div>
+<br/>
 
-<div class="well">
+<div class="flex-grid">
   <div class="form-group">
     <%= f.fields_for :date_options do |builder| %>
-      <%= render 'date_option_fields', f: builder %><br>
-    <% end %> <br/>
-    <%= link_to_add_fields "Add Date Options", f, :date_options %> <br>
+      <%= render 'date_option_fields', f: builder %><br/>
+    <% end %>
+    <%= link_to_add_fields "Add Date Options", f, :date_options %> <br/>
   </div>
 </div>
+<br/>
 
+<div class="btn-group">
   <div class="actions" >
-    <%= f.submit class: 'btn btn-default' %>
+    <%= f.submit class: 'btn btn-default btn-pink' %>
+    <%= link_to 'Back to Party Details', party_path(@party), class: 'btn btn-default' %>
   </div>
+</div>
+<br/>
+
 <% end %>

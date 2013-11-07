@@ -1,4 +1,8 @@
 <h1>Invite the hens to <%= @party.name %></h1>
+
+<div class='col-lg-9'>
+<br/>
+<br/>
 <p>
   Send all the hens an email, you write the message and we'll add
   a special link for them to join your hen party.
@@ -20,9 +24,16 @@
                     :class => "form-control",
                     :rows => 8 %>
   </div>
-
-  <div class='form-group'>
-    <%= f.submit 'Send invitations', :class => 'btn btn-default' %>
+  <br/>
+  <div class="btn-group">
+    <div class='form-group'>
+      <%= f.submit 'Send invitations', :class => 'btn btn-default btn-pink' %>
+      <%= link_to 'Back to Party Details', party_path(@party), class: 'btn btn-default' %>
+    </div>
+   
   </div>
+  <br/>
+  <br/>
 
 <% end %>
+

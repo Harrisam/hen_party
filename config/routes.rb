@@ -4,9 +4,10 @@ HenParty::Application.routes.draw do
 
   devise_for :users, :skip => [:registrations]
   
-  resources :parties do
+  resources :parties, :except => [:new] do
     resources :invitations, :only => [:new, :create]
   end
+  post 'parties/new' => 'parties#new', as: 'new_party'
 
   get 'parties/:party_id/plan' => 'plan#index', :as => 'plan_party'
   get 'parties/:party_id/plan/itinerary' => 'plan#itinerary', :as => 'plan_itinerary'
