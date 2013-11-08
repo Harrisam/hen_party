@@ -253,3 +253,8 @@ main h1 {
   color: #B31D7E;
   height: 50px;
 }
+
+h3, h4 {
+  font-family: 'ABeeZee', sans-serif;
+}
+
