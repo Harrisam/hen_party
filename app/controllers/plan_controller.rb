@@ -1,14 +1,12 @@
 class PlanController < ApplicationController
   before_filter :authenticate_user!
   before_action :set_party
+  before_action :set_responses, only: [:index,
+                                       :accommodation_search,
+                                       :product_search]
   before_action :get_best_price_pages
 
   def index
-    @participants = @party.participants
-    @budget_responses = budget_responses
-    @budget_options = @party.budgets
-    @date_responses = date_responses
-    @date_options = @party.date_options
   end
 
   def product_search
@@ -33,6 +31,14 @@ class PlanController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_party
       @party = Party.find(params[:party_id])
+    end
+
+    def set_responses
+      @participants = @party.participants
+      @budget_responses = budget_responses
+      @budget_options = @party.budgets
+      @date_responses = date_responses
+      @date_options = @party.date_options
     end
 
     def budget_responses
