@@ -5,6 +5,8 @@ An MVP created in 10 days to make organising a hen party easier for maids of hon
 
 Created by [@Harrisam2], [@jamesjoshuahill] and [@jodiealaine].
 
+![Hen Part App][screenshot]
+
 **[http://henparty.herokuapp.com]**
 
 
@@ -57,5 +59,5 @@ Technologies
   [@Harrisam2]: http://twitter.com/Harrisam2
   [@jamesjoshuahill]: http://twitter.com/jamesjoshuahill
   [@jodiealaine]: http://twitter.com/jodiealaine
+  [screenshot]: https://github.com/Harrisam/hen_party/raw/readme/screenshot.png "Hen Party App"
   [http://henparty.herokuapp.com]: http://henparty.herokuapp.com
-  
